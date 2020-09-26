@@ -21,6 +21,16 @@ const routes = [
     component: () => import('../views/ForgotPassword.vue')
   },
   {
+    path: '/mybooking',
+    name: 'Mybooking',
+    component: () => import('../views/Mybooking.vue')
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/Profile.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
