@@ -1,20 +1,22 @@
 <template>
-  <div class="app-footer" >
+  <div class="app-footer bg-white" >
       <!-- desktop -->
       <footer class="d-sm-block d-none" >
           <div class="row">
               <div class="col-4">
-                  <p class="font-weight-bold" ><img class="mr-2" src="../assets/img/vector 02.png">Ankasa</p>
+                  <h4 class="font-weight-bold mb-4" ><img class="mr-2" src="../assets/img/vector 02.png">Ankasa</h4>
                   <p class="text-moto" >Find your Flight and explore the
                     world with us. We will take care of the rest</p>
-                  <p>© Ankasa.  All Rights Reserved.</p>
+                  <p class="color-second" >© Ankasa.  All Rights Reserved.</p>
               </div>
               <div class="col-2">
                   <p class="mb-4" >Features</p>
-                  <p>Find Ticket</p>
-                  <p>My Booking</p>
-                  <p>Chat</p>
-                  <p>Notification</p>
+                  <div class="color-second">
+                    <p>Find Ticket</p>
+                    <p>My Booking</p>
+                    <p>Chat</p>
+                    <p>Notification</p>
+                  </div>
               </div>
               <div class="col-3">
                   <p class="mb-4" >Download Angkasa app</p>
@@ -29,7 +31,7 @@
                       <img class="ml-4" src="../assets/img/instagram.png">
                       <img class="ml-4" src="../assets/img/youtube.png">
                   </div>
-                  <p class="app-map"><img class="mr-2" src="../assets/img/map-pin.png">Jakarta Indonesia</p>
+                  <p class="app-map color-second"><img class="mr-2" src="../assets/img/map-pin.png">Jakarta Indonesia</p>
               </div>
           </div>
       </footer>
@@ -52,6 +54,9 @@ export default {
 }
 .text-moto{
     margin-bottom: 200px;
+    font-size: 14px;
+    line-height: 221.43%;
+    color: #6B6B6B;
 }
 .app-map{
     margin-top: 225px;
