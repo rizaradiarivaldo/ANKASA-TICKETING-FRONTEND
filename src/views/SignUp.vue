@@ -4,7 +4,7 @@
       <b-col lg="7" class="blueBanner">
         <img src="../assets/img/logo1.svg" alt="">
       </b-col>
-      <b-col lg="5" md="none" class="formBanner">
+      <b-col lg="5" class="formBanner">
         <b-col class="row formTitle">
         <img src="../assets/img/blueairlines.svg">
         <h5>Ankasa</h5>
