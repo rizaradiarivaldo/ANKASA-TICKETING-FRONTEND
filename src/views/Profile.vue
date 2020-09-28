@@ -124,9 +124,9 @@ export default {
   border: none !important;
   border-radius: 15px !important;
 }
-.app-body{
-  /* background-color: #F5F6FA; */
-}
+/* .app-body{
+  background-color: #F5F6FA;
+} */
 .app-body-content{
   background-color: white;
 }

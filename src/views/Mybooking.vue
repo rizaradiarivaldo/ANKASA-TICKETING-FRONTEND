@@ -146,9 +146,9 @@ export default {
   background-repeat: no-repeat;
   background-position: center;
 }
-.app-body{
-  /* background-color: #F5F6FA; */
-}
+/* .app-body{
+  background-color: #F5F6FA;
+} */
 .app-body-content{
   background-color: white;
 }

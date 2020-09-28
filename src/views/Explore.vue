@@ -12,7 +12,7 @@
                 </b-row>
             </b-col>
             <b-col lg="1">
-<!-- LOL -->
+            <!-- LOL -->
             </b-col>
             <b-col lg="5">
                 <b-row class="imgSizeright">
@@ -27,41 +27,42 @@
             <b-col class="destinationsOne">
                 <h5>T R E N D I N G</h5>
             </b-col>
-            <b-row>
-                <b-col lg="6">
+            <b-col class="destinationsTwo">
                 <h3>Trending Destinations</h3>
-                </b-col>
-                <b-col lg="6">
-                <h5>View all</h5>
-                </b-col>
-            </b-row>
-            <!-- <b-col class="destinationsTwo">
-                <div class="row">
-                    Trending Destinations
-                </div>
-            </b-col> -->
+                <p><span>View all</span></p>
+            </b-col>
         </b-row>
+        <CardScroll/>
         <Footer/>
     </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
+import Navbar from '@/components/NavbarExplore.vue'
 import Footer from '@/components/Footer.vue'
+import CardScroll from '@/components/CardScroll.vue'
 export default {
   components: {
     Footer,
-    Navbar
+    Navbar,
+    CardScroll
   }
 }
 </script>
 
 <style scoped>
+.fillDestinations {
+    margin-left: 105px;
+}
 .destinationsTwo {
+/* background: red; */
+display: flex;
+justify-content: space-between;
+padding-right: 120px;
 
 }
 .destinationsOne{
-    padding-right: 90%;
+    padding-right: 89%;
 }
 .dotUnderImg{
     padding-top: 10%;
@@ -75,7 +76,7 @@ export default {
     margin-bottom: 100px;
     margin-top: 100px;
 }
-.fillleft span {
+span {
     color: #2395ff;
 }
 .fillFlight{
@@ -83,7 +84,7 @@ export default {
     margin: 0px;
 }
 .imgSizeLeft img {
-    width: 100%;
+    width: 95%;
     border-top-right-radius: 10%;
     border-bottom-right-radius: 10%;
 }
