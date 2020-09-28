@@ -2,7 +2,7 @@
   <div class="app-nav bg-white">
     <!-- NavbarDesktop -->
     <nav class="d-sm-block d-none" >
-        <div class="row app-nav-middle align-items-center">
+        <div class="row app-nav-middle align-items-center no-gutters">
             <div class="col-3">
                 <h4 class="font-weight-bold ml-5" ><img class="mr-2" src="../assets/img/vector 02.png">Ankasa</h4>
             </div>

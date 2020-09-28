@@ -12,20 +12,20 @@
         <b-col>
           <div class="login-box">
             <h4>Register</h4>
-            <form class="formRegis">
+            <form class="formRegis" @submit.prevent="onSignUp">
               <div class="user-box">
-                <input type="text" name="" required="">
+                <input type="text" name="" v-model="form.username" required="">
                 <label>Full Name</label>
               </div>
               <div class="user-box">
-                <input type="text" name="" required="">
+                <input type="text" name="" v-model="form.email" required="">
                 <label>Email</label>
               </div>
               <div class="user-box">
-                <input type="password" name="" required="">
+                <input type="password" name="" v-model="form.password" required="">
                 <label>Password</label>
               </div>
-              <b-button class="mt-3 b-Signup" type="submit" block>Sign Up</b-button>
+              <b-button class="mt-3 b-Signup" type="submit" @click="loadOnce" block>Sign Up</b-button>
             </form>
               <div class="form-check checkalign mt-3">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -34,7 +34,7 @@
               <hr style="border: 1px solid #D8D8D8">
               <p style="color: #4D4D4D; text-align: center">Already have an account?</p>
               <router-link to="/login" style="text-decoration: none;">
-                <b-button class="mt-3 b-Signin" type="submit" block>Sign In</b-button>
+                <b-button class="mt-3 b-Signin" type="submit"  block>Sign In</b-button>
               </router-link>
 
           </div>
@@ -43,6 +43,33 @@
     </b-row>
   </div>
 </template>
+
+<script>
+import { mapActions } from 'vuex'
+export default {
+  data () {
+    return {
+      form: {
+        username: null,
+        email: null,
+        password: null
+      }
+    }
+  },
+  methods: {
+    loadOnce () {
+      this.onSignUp(this.form)
+        .then((result) => {
+          console.log(result)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    ...mapActions({ onSignUp: 'Auth/register' })
+  }
+}
+</script>
 
 <style scoped>
 .blueBanner img {

@@ -21,7 +21,7 @@
       <input type="password" name="" required="">
       <label>Password</label>
     </div>
-    <b-button class="mt-3 b-Signup" type="submit" block>Sign In</b-button>
+    <b-button class="mt-3 b-SignIn" type="submit" block>Sign In</b-button>
   </form>
   <br>
   <p style="color: #4D4D4D; text-align: center; padding-bottom: 0px; margin-bottom: 0px">Did you forgot password?</p>
@@ -55,7 +55,7 @@
   background: #2395FF;
   height: 100vh;
 }
-.b-Signin {
+/* .b-Signin {
   border: 1px solid #2395FF;
   box-sizing: border-box;
   border-radius: 10px;
@@ -68,15 +68,15 @@
   box-shadow: 0px 8px 10px rgba(35, 149, 255, 0.3);
   color: #fff;
   border: 1px solid #2395ff;
-}
-.b-Signup{
+} */
+.b-SignIn{
   border: 1px solid #2395ff;
   background: #2395FF;
   box-shadow: 0px 8px 10px rgba(35, 149, 255, 0.3);
   border-radius: 10px;
   padding: 10px;
 }
-.b-Signup:hover{
+.b-SignIn:hover{
   background: #fff;
   box-shadow: 0px 8px 10px rgba(35, 149, 255, 0.3);
   color: #2395FF;
