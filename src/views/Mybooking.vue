@@ -1,45 +1,11 @@
 <template>
   <div class="shadow container-fluid" >
-      <!-- desktop -->
       <Navbar/>
-        <div class="app-body pt-5 pl-5 pr-5 pb-5">
-          <div class="row">
+        <div class="app-body pt-sm-5 pl-sm-5 pr-sm-5 pb-sm-5 pt-0 pl-0 pr-0 pb-0">
+          <!-- desktop -->
+          <div class="row d-sm-flex d-none">
           <div class="col-sm-3">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-center">
-                  <img class="img-thumbnail" alt="Responsive image" src="../assets/img/nnzkZNYWHaU.png">
-                </div>
-                <div class="text-center mt-3" >
-                  <button type="button" class="btn btn-outline-primary btn-lg font-weight-bold">Select Photo</button>
-                </div>
-                <div class="text-center mt-3" >
-                  <h4 class="font-weight-bold" >Mike Kowalski</h4>
-                </div>
-                <div class="text-center mt-2" >
-                  <p style="color: #6B6B6B;" >Medan, Indonesia</p>
-                </div>
-                <div class="row">
-                  <div class="col-6"><p class="" >Cards</p></div>
-                  <div class="col-6"><p class="text-right add-cards" >+ Add</p></div>
-                </div>
-                <div class="text-white cards mb-4 pt-2 pl-3 pr-3">
-                  <p class="font-weight-bold cards-id" >4441 1235 5512 5551</p>
-                  <div class="row cards-detail">
-                    <div class="col-6"><p class="" >X Card</p></div>
-                    <div class="col-6"><p class="text-right" >$ 1,440.2</p></div>
-                  </div>
-                </div>
-                <div class="font-weight-bold">
-                  <router-link to="/profile" class="router-link">
-                    <p class="body-text-profile ml-2 mb-4"><img class="mr-4" src="../assets/img/user.png">Profile</p>
-                  </router-link>
-                  <p class="ml-2 mb-4"><img class="mr-4" src="../assets/img/Vector (4).png">My Review</p>
-                  <p class="ml-2 mb-4"><img class="mr-4" src="../assets/img/Vector (5).png">Settings</p>
-                  <p class="body-text-logout ml-2 mb-4"><img class="mr-4" src="../assets/img/Vector (6).png">Logout</p>
-                </div>
-                </div>
-            </div>
+            <CardProfile/>
           </div>
           <div class="col-sm-9">
             <div class="card mb-4">
@@ -85,19 +51,60 @@
             </div>
           </div>
         </div>
+        <!-- HP -->
+        <div class="row no-gutters justify-content-center bg-white d-sm-none d-flex">
+          <div class="col-sm-12">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h6 class="card-title cards-title">MY BOOKING</h6>
+                <div class="row">
+                  <div class="col-6"><h3 class="card-text cards-text-hp font-weight-bold">My Booking</h3></div>
+                  <div class="col-6 font-weight-bold text-right color-default"><p>Order History</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="card mb-4">
+              <div class="card-body-hp">
+                <h6 class="card-title">Monday, 20 July ‘20 - 12:33</h6>
+                <h5 class="font-weight-bold" >IDN <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> JPN</h5>
+                <p class="color-second" >Garuda Indonesia, AB-221</p>
+                <hr class="mb-4" >
+                <div class="row">
+                  <div class="col-12">
+                    <p class="color-second font-weight-bold" >Status <span class="booking-status-pending" >Waiting for payment</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body-hp">
+                <h6 class="card-title">Monday, 20 July ‘20 - 12:33</h6>
+                <h5 class="font-weight-bold" >IDN <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> JPN</h5>
+                <p class="color-second" >Garuda Indonesia, AB-221</p>
+                <hr class="mb-4" >
+                <div class="row">
+                  <div class="col-12">
+                    <p class="color-second font-weight-bold" >Status <span class="booking-status-success" >Eticket issued</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <Footer/>
-      <!-- HP -->
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
+import CardProfile from '@/components/CardProfile.vue'
 export default {
   components: {
     Navbar,
-    Footer
+    Footer,
+    CardProfile
   }
 }
 </script>
@@ -124,6 +131,21 @@ export default {
   border: none !important;
   border-radius: 15px !important;
 }
+.card-body-hp {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.55rem;
+  background: #FFFFFF;
+  /* box-shadow: 0px 2px 4px rgba(14, 63, 108, 0.19); */
+  border-radius: 12px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-image: url('../assets/img/ticketBackground.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .app-body{
   /* background-color: #F5F6FA; */
 }
@@ -147,7 +169,7 @@ export default {
   border-radius: 10px;
 }
 .cards-detail {
-  margin-top: -15px;
+  /* margin-top: -15px; */
   font-size: 12px;
 }
 .cards-id {
@@ -163,6 +185,11 @@ export default {
   letter-spacing: 0.3em;
 
   color: #2395FF;
+}
+.cards-text-hp {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
 }
 .body-text-profile {
   color: #2395FF;
@@ -180,7 +207,7 @@ export default {
   background: #FF7F23;
   border-radius: 6px;
   padding: 10px;
-  margin-left: 50px;
+  margin-left: 30px;
   color: white;
 }
 .booking-status-success {
