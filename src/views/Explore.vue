@@ -33,12 +33,56 @@
             </b-col>
         </b-row>
         <CardScroll/>
+        <div>
+            <div class="bgCarousel">
+                <!-- <img src="../assets/img/topten.svg" alt=""> -->
+                <b-carousel id="carousel-1"
+      v-model="slide"
+      :interval="4000"
+      controls
+      indicators
+      background="#ababab"
+      img-width="1024"
+      img-height="480"
+      style="text-shadow: 1px 1px 2px #333;"
+      @sliding-start="onSlideStart"
+      @sliding-end="onSlideEnd">
+  <b-carousel-slide>
+    <template v-slot:img>
+      <b-card-group>
+        <b-card img-src="https://3.bp.blogspot.com/-_ye23HGuhWc/Wlvf9oSaYxI/AAAAAAABOzo/8n42T6m1bZkJBAFEAlpDnbrKpzIauIGhwCKgBGAs/s1600/cuddles_profile_picture.png" overlay></b-card>
+        <b-card img-src="https://3.bp.blogspot.com/-_ye23HGuhWc/Wlvf9oSaYxI/AAAAAAABOzo/8n42T6m1bZkJBAFEAlpDnbrKpzIauIGhwCKgBGAs/s1600/cuddles_profile_picture.png" overlay></b-card>
+        <b-card img-src="https://3.bp.blogspot.com/-_ye23HGuhWc/Wlvf9oSaYxI/AAAAAAABOzo/8n42T6m1bZkJBAFEAlpDnbrKpzIauIGhwCKgBGAs/s1600/cuddles_profile_picture.png" overlay></b-card>
+      </b-card-group>
+    </template>
+  </b-carousel-slide>
+  <b-carousel-slide>
+    <template v-slot:img>
+      <b-card-group>
+        <b-card img-src="https://vignette.wikia.nocookie.net/happytreefriendsadventures/images/d/db/Nutty.png/revision/latest/top-crop/width/360/height/450?cb=20191114033316" overlay></b-card>
+        <b-card img-src="https://vignette.wikia.nocookie.net/happytreefriendsadventures/images/d/db/Nutty.png/revision/latest/top-crop/width/360/height/450?cb=20191114033316" overlay></b-card>
+        <b-card img-src="https://vignette.wikia.nocookie.net/happytreefriendsadventures/images/d/db/Nutty.png/revision/latest/top-crop/width/360/height/450?cb=20191114033316" overlay></b-card>
+      </b-card-group>
+    </template>
+  </b-carousel-slide>
+  <b-carousel-slide>
+    <template v-slot:img>
+      <b-card-group>
+        <b-card img-src="https://vignette.wikia.nocookie.net/happytreefriends/images/c/c4/PetuniaNewStyle.png/revision/latest?cb=20200912045950" overlay></b-card>
+        <b-card img-src="https://vignette.wikia.nocookie.net/happytreefriends/images/c/c4/PetuniaNewStyle.png/revision/latest?cb=20200912045950" overlay></b-card>
+        <b-card img-src="https://vignette.wikia.nocookie.net/happytreefriends/images/c/c4/PetuniaNewStyle.png/revision/latest?cb=20200912045950" overlay></b-card>
+      </b-card-group>
+    </template>
+  </b-carousel-slide>
+</b-carousel>
+            </div>
+        </div>
         <Footer/>
     </div>
 </template>
 
 <script>
-import Navbar from '@/components/NavbarExplore.vue'
+import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import CardScroll from '@/components/CardScroll.vue'
 export default {
@@ -51,6 +95,10 @@ export default {
 </script>
 
 <style scoped>
+.bgCarousel{
+    background: tomato;
+    padding-left: 9%;
+}
 .fillDestinations {
     margin-left: 105px;
 }
