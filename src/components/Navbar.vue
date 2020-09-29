@@ -4,7 +4,9 @@
     <nav class="d-sm-block d-none" :style="$route.path === '/'? 'box-shadow: none;' : 'box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);'">
         <div class="row no-gutters app-nav-middle align-items-center">
             <div class="col-3">
-                <h4 class="font-weight-bold ml-5" ><img class="mr-2" src="../assets/img/vector 02.png">Ankasa</h4>
+                <router-link to="/" class="router-link" >
+                    <h4 class="font-weight-bold ml-5" ><img class="mr-2" src="../assets/img/vector 02.png">Ankasa</h4>
+                </router-link>
             </div>
             <div class="col-6">
                 <div class="row">
@@ -62,7 +64,9 @@
     <nav class="d-sm-none d-block bg-white">
         <div class="row no-gutters app-nav-middle align-items-center">
             <div class="col-6">
+            <router-link to="/" class="router-link" >
                 <h4 class="font-weight-bold ml-4" ><img class="mr-3" src="../assets/img/vector 02.png">Ankasa</h4>
+            </router-link>
             </div>
             <div class="col-6">
                 <a v-b-toggle.collapse-1 >
@@ -124,6 +128,14 @@ export default {
 </script>
 
 <style>
+.img-thumbnail {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 2px solid rgba(35, 149, 255, 1) !important;
+  border-radius: 100% !important;
+  max-width: 100% !important;
+  height: auto;
+}
 .b-SignUp{
   border: 1px solid #2395ff;
   background: #2395FF;
@@ -195,6 +207,7 @@ color: #6B6B6B;
 }
 .router-link{
     text-decoration: none !important;
+    color: black !important;
 }
 .nav-menu {
     color: #414141 !important;

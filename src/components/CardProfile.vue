@@ -1,5 +1,5 @@
 <template>
-    <div class="card-profile" >
+    <div class="w-100 pl-3 pr-3" >
         <!-- CardProfile Desktop -->
     <div class="card d-sm-block d-none">
         <div class="card-body">
@@ -98,8 +98,7 @@ export default {
 }
 .cont-edit-photo {
     position: absolute;
-    right: 0px;
-    left: 120px;
+    right: 100px;
     bottom: 0px;
 }
 .cards {

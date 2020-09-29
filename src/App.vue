@@ -19,4 +19,16 @@
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
 }
+.color-default {
+  color: #2395FF;
+}
+.color-second {
+  color:#6B6B6B;
+}
+.color-third {
+  color:#595959;
+}
+.font-size-12 {
+  font-size: 12px;
+}
 </style>
