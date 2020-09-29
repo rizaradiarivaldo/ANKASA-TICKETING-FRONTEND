@@ -2,7 +2,7 @@
   <div>
     <Navbar />
     <b-row class="fillFlight">
-      <b-col lg="6">
+      <b-col lg="6" md="5">
         <b-row class="fillleft">
           <h1>Find your <span>Flight</span></h1>
           <p>and explore the world with us</p>
@@ -14,7 +14,7 @@
       <b-col lg="1">
         <!-- LOL -->
       </b-col>
-      <b-col lg="5">
+      <b-col lg="5" md="6">
         <b-row class="imgSizeright">
           <img src="../assets/img/japan-bg.jpg" alt="" />
         </b-row>
@@ -33,125 +33,28 @@
       </b-col>
     </b-row>
     <CardScroll />
-    <div class="containerCarousel">
-      <div class="bgCarousel">
-        <div class="textTopten">
-          <p style="color: #FFFFFF;">Top 10</p>
-        </div>
-        <div class="textDestinations">
-          <h5 style="color: #FFFFFF;">Top 10 Destinations</h5>
-        </div>
-        <b-carousel
-          id="carousel-fade"
-          style="text-shadow: 0px 0px 2px #000"
-          controls
-          img-width="1024"
-          img-height="480">
-          <b-carousel-slide class="asd">
-            <template v-slot:img>
-              <b-card-group class="imgCarousel">
-                <b-avatar
-                  src="https://cdns.klimg.com/merdeka.com/i/w/news/2017/06/03/850314/670x335/liam-gallagher-aku-lebih-memilih-oasis-daripada-bersolo-karir.jpg"
-                  class="mr-5"
-                  size="8rem"
-                ></b-avatar>
-                <b-avatar
-                  src="https://cdns.klimg.com/merdeka.com/i/w/news/2017/06/03/850314/670x335/liam-gallagher-aku-lebih-memilih-oasis-daripada-bersolo-karir.jpg"
-                  class="mr-5"
-                  size="8rem"
-                ></b-avatar>
-                <b-avatar
-                  src="https://cdns.klimg.com/merdeka.com/i/w/news/2017/06/03/850314/670x335/liam-gallagher-aku-lebih-memilih-oasis-daripada-bersolo-karir.jpg"
-                  class="mr-5"
-                  size="8rem"
-                ></b-avatar>
-                <b-avatar
-                  src="https://cdns.klimg.com/merdeka.com/i/w/news/2017/06/03/850314/670x335/liam-gallagher-aku-lebih-memilih-oasis-daripada-bersolo-karir.jpg"
-                  class="mr-5"
-                  size="8rem"
-                ></b-avatar>
-                <b-avatar
-                  src="https://cdns.klimg.com/merdeka.com/i/w/news/2017/06/03/850314/670x335/liam-gallagher-aku-lebih-memilih-oasis-daripada-bersolo-karir.jpg"
-                  class="mr-5"
-                  size="8rem"
-                ></b-avatar>
-              </b-card-group>
-            </template>
-          </b-carousel-slide>
-          <b-carousel-slide class="asd">
-            <template v-slot:img>
-              <b-card-group class="imgCarousel">
-                <b-avatar
-                  src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
-                  class="mr-5"
-                  size="8rem"
-                ></b-avatar>
-                <b-avatar
-                  src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
-                  class="mr-5"
-                  size="8rem"
-                ></b-avatar>
-                <b-avatar
-                  src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
-                  class="mr-5"
-                  size="8rem"
-                ></b-avatar>
-                <b-avatar
-                  src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
-                  class="mr-5"
-                  size="8rem"
-                ></b-avatar>
-                <b-avatar
-                  src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
-                  class="mr-5"
-                  size="8rem"
-                ></b-avatar>
-              </b-card-group>
-            </template>
-          </b-carousel-slide>
-        </b-carousel>
-    </div>
-    </div>
+    <DestinationsCarousel/>
     <Footer />
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
+import Navbar from '@/components/NavbarExplore.vue'
 import Footer from '@/components/Footer.vue'
 import CardScroll from '@/components/CardScroll.vue'
+import DestinationsCarousel from '@/components/DestinationsCarousel.vue'
 export default {
   components: {
     Footer,
     Navbar,
-    CardScroll
+    CardScroll,
+    DestinationsCarousel
   }
 }
 </script>
 
 <style scoped>
-.containerCarousel{
-  margin-left: 120px;
-}
-.textTopten {
-  margin-left: 47%;
-}
-.textDestinations {
-  margin-left: 41%;
-  margin-bottom: 5%;
-}
-.imgCarousel {
-  margin-left: 12.5%;
-}
-.bgCarousel {
-  background-image: url('../assets/img/topten.svg');
-  background-repeat: no-repeat;
-  padding-bottom: 50%;
-  padding-top: 5%;
-  padding-right: 10%;
-  margin-bottom: -25%;
-  margin-top: 10%;
-}
+
 .fillDestinations {
   margin-left: 105px;
 }
@@ -162,6 +65,9 @@ export default {
 }
 .destinationsOne {
   padding-right: 89%;
+}
+.destinationsOne h5 {
+  color: #2395ff;
 }
 .dotUnderImg {
   padding-top: 10%;
@@ -194,14 +100,69 @@ span {
 }
 @media screen and (max-width: 375px){
 .fillFlight{
-  /* background: olivedrab; */
   padding: 0 0;
 }
 .fillleft{
   /* background: red; */
-  padding-left: 0px;
+  padding-left: 10px;
   padding-right: 0px;
   margin-top: 25px;
+}
+.fillleft h1{
+  font-size: 35px;
+}
+.fillleft p {
+  font-size: 15px;
+}
+.imgSizeLeft img{
+  width: 50%;
+  margin-left: 69%;
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  margin-top: -25%;
+}
+.imgSizeright{
+  margin-bottom: 100px;
+}
+.imgSizeright img{
+  margin-right: 65%;
+  margin-bottom: 10%;
+  margin-top: -15%;
+  width: 50%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+.dotUnderImg{
+  margin: 0px;
+}
+.dotUnderImg img{
+  width: 40%;
+  margin-left: 95%;
+}
+.fillDestinations{
+  margin: 0px;
+}
+.destinationsOne{
+  padding-right: 15px;
+  margin-left: 20px;
+  margin-right: 190px;
+}
+.destinationsOne h5{
+  font-size: 10px;
+}
+.destinationsTwo{
+  margin: 0 0 0 20px;
+  padding: 0px;
+}
+.destinationsTwo h3 {
+  font-size: 15px;
+}
+.destinationsTwo p {
+  font-size: 12px;
 }
 }
 </style>

@@ -108,4 +108,15 @@ p {
 ::-webkit-scrollbar {
     background: transparent;
 }
+@media screen and (max-width: 375px){
+  .cardScroll{
+    width: 119vw;
+    margin-left: 0px;
+
+  }
+  .marginCard{
+    max-width: 75%;
+    max-height: 10%;
+}
+}
 </style>
