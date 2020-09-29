@@ -44,7 +44,7 @@
         </div>
         <div class="cont-edit-photo">
            <div class="edit-photo" >
-            <img class="img-fluid" src="..\assets\img\Vector.svg">
+            <img class="img-fluid" src="../assets/img/Vector.svg">
         </div>
         </div>
         </div>
