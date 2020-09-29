@@ -185,26 +185,4 @@ export default {
     padding-bottom: 20px;
   }
 }
-/* @media screen and (max-width: 1024px){
-  .blueBanner {
-    display: none;
-  }
-  .login-box {
-    position: relative;
-    margin-left: 50px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-top: 100px;
-    padding: 0px;
-    background: orangered;
-  }
-  .checkalign {
-    text-align: center;
-  }
-  .formTitle {
-    margin: 0px;
-    padding-left: 10px;
-    padding-bottom: 20px;
-  }
-} */
 </style>

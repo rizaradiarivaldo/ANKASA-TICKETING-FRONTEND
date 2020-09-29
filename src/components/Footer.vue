@@ -19,7 +19,7 @@
                   </div>
               </div>
               <div class="col-3">
-                  <p class="mb-4" >Download Angkasa app</p>
+                  <p class="mb-4" >Download Ankasa app</p>
                   <img class="mb-3" src="../assets/img/apple-app-store-travel-awards-globestamp-7 3.png">
                   <img src="../assets/img/apple-app-store-travel-awards-globestamp-7 2.png">
               </div>
@@ -46,7 +46,7 @@
             <div class="col-3 text-center"><p>Chat</p></div>
             <div class="col-3"><p>Notification</p></div>
         </div>
-        <p class="mb-4 font-weight-bold" >Download Angkasa app</p>
+        <p class="mb-4 font-weight-bold" >Download Ankasa app</p>
         <div class="row mb-5">
             <div class="col-6">
                 <img class="img-fluid" src="../assets/img/apple-app-store-travel-awards-globestamp-7 3.png">

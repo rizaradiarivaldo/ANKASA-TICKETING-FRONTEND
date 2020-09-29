@@ -44,7 +44,7 @@
             <select required>
               <option selected></option>
               <option>Medan</option>
-              <option>Jogjs</option>
+              <option>Jogja</option>
               <option>Jakarta</option>
             </select>
             <label>City</label>
@@ -114,9 +114,9 @@ export default {
   border: none !important;
   border-radius: 15px !important;
 }
-.app-body{
-  /* background-color: #F5F6FA; */
-}
+/* .app-body{
+  background-color: #F5F6FA;
+} */
 .app-body-content{
   background-color: white;
 }

@@ -33,43 +33,47 @@
       </b-col>
     </b-row>
     <CardScroll />
-    <div>
+    <div class="containerCarousel">
       <div class="bgCarousel">
-        <!-- <img src="../assets/img/topten.svg" alt=""> -->
+        <div class="textTopten">
+          <p style="color: #FFFFFF;">Top 10</p>
+        </div>
+        <div class="textDestinations">
+          <h5 style="color: #FFFFFF;">Top 10 Destinations</h5>
+        </div>
         <b-carousel
           id="carousel-fade"
           style="text-shadow: 0px 0px 2px #000"
           controls
           img-width="1024"
-          img-height="480"
-        >
+          img-height="480">
           <b-carousel-slide class="asd">
             <template v-slot:img>
               <b-card-group class="imgCarousel">
                 <b-avatar
                   src="https://cdns.klimg.com/merdeka.com/i/w/news/2017/06/03/850314/670x335/liam-gallagher-aku-lebih-memilih-oasis-daripada-bersolo-karir.jpg"
                   class="mr-5"
-                  size="6rem"
+                  size="8rem"
                 ></b-avatar>
                 <b-avatar
                   src="https://cdns.klimg.com/merdeka.com/i/w/news/2017/06/03/850314/670x335/liam-gallagher-aku-lebih-memilih-oasis-daripada-bersolo-karir.jpg"
                   class="mr-5"
-                  size="6rem"
+                  size="8rem"
                 ></b-avatar>
                 <b-avatar
                   src="https://cdns.klimg.com/merdeka.com/i/w/news/2017/06/03/850314/670x335/liam-gallagher-aku-lebih-memilih-oasis-daripada-bersolo-karir.jpg"
                   class="mr-5"
-                  size="6rem"
+                  size="8rem"
                 ></b-avatar>
                 <b-avatar
                   src="https://cdns.klimg.com/merdeka.com/i/w/news/2017/06/03/850314/670x335/liam-gallagher-aku-lebih-memilih-oasis-daripada-bersolo-karir.jpg"
                   class="mr-5"
-                  size="6rem"
+                  size="8rem"
                 ></b-avatar>
                 <b-avatar
                   src="https://cdns.klimg.com/merdeka.com/i/w/news/2017/06/03/850314/670x335/liam-gallagher-aku-lebih-memilih-oasis-daripada-bersolo-karir.jpg"
                   class="mr-5"
-                  size="6rem"
+                  size="8rem"
                 ></b-avatar>
               </b-card-group>
             </template>
@@ -80,33 +84,33 @@
                 <b-avatar
                   src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
                   class="mr-5"
-                  size="6rem"
+                  size="8rem"
                 ></b-avatar>
                 <b-avatar
                   src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
                   class="mr-5"
-                  size="6rem"
+                  size="8rem"
                 ></b-avatar>
                 <b-avatar
                   src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
                   class="mr-5"
-                  size="6rem"
+                  size="8rem"
                 ></b-avatar>
                 <b-avatar
                   src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
                   class="mr-5"
-                  size="6rem"
+                  size="8rem"
                 ></b-avatar>
                 <b-avatar
                   src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
                   class="mr-5"
-                  size="6rem"
+                  size="8rem"
                 ></b-avatar>
               </b-card-group>
             </template>
           </b-carousel-slide>
         </b-carousel>
-      </div>
+    </div>
     </div>
     <Footer />
   </div>
@@ -126,19 +130,32 @@ export default {
 </script>
 
 <style scoped>
+.containerCarousel{
+  margin-left: 120px;
+}
+.textTopten {
+  margin-left: 47%;
+}
+.textDestinations {
+  margin-left: 41%;
+  margin-bottom: 5%;
+}
 .imgCarousel {
-  margin-left: 225px;
-  /* background: black; */
+  margin-left: 12.5%;
 }
 .bgCarousel {
-  background: tomato;
-  padding-left: 9%;
+  background-image: url('../assets/img/topten.svg');
+  background-repeat: no-repeat;
+  padding-bottom: 50%;
+  padding-top: 5%;
+  padding-right: 10%;
+  margin-bottom: -25%;
+  margin-top: 10%;
 }
 .fillDestinations {
   margin-left: 105px;
 }
 .destinationsTwo {
-  /* background: red; */
   display: flex;
   justify-content: space-between;
   padding-right: 120px;
@@ -174,5 +191,17 @@ span {
   width: 100%;
   border-top-left-radius: 10%;
   border-bottom-left-radius: 10%;
+}
+@media screen and (max-width: 375px){
+.fillFlight{
+  /* background: olivedrab; */
+  padding: 0 0;
+}
+.fillleft{
+  /* background: red; */
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-top: 25px;
+}
 }
 </style>
