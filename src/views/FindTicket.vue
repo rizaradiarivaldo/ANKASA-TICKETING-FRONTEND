@@ -2,7 +2,7 @@
     <div class="container-fluid" >
         <Navbar/>
         <div class="head">
-          <img class="img-head" src="..\assets\img\vector 02.svg">
+          <img class="img-head" src="../assets/img/vector 02.svg">
           <div class="d-block text-head">
             <div class="d-flex text-form-to w-100">
               <p >From</p>
@@ -11,7 +11,7 @@
             <div class="d-flex text-country w-100">
               <p>Medan(IDN)</p>
               <div class="text-center w-100">
-                <img src="..\assets\img\Vector (1).svg">
+                <img src="../assets/img/Vector (1).svg">
               </div>
               <p class="ml-auto" >Tokyo(JPN)</p>
             </div>
