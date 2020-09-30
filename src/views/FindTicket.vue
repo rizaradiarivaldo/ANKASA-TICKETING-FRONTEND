@@ -371,8 +371,7 @@ export default {
   font-size: 12px;
   line-height: 14px;
 }
-.bodyy {
-}
+
 .card {
   position: relative;
   display: -ms-flexbox;
