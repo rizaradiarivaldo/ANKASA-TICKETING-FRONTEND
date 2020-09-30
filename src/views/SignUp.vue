@@ -12,7 +12,7 @@
         <b-col>
           <div class="login-box">
             <h4>Register</h4>
-            <form class="formRegis" @submit.prevent="onSignUp">
+            <form class="formRegis" @submit.prevent="loadOnce">
               <div class="user-box">
                 <input type="text" name="" v-model="form.username" required="">
                 <label>Full Name</label>
@@ -25,7 +25,7 @@
                 <input type="password" name="" v-model="form.password" required="">
                 <label>Password</label>
               </div>
-              <b-button class="mt-3 b-Signup" type="submit" @click="loadOnce" block>Sign Up</b-button>
+              <b-button class="mt-3 b-Signup" type="submit" block>Sign Up</b-button>
             </form>
               <div class="form-check checkalign mt-3">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">

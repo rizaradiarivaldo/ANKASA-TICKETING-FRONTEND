@@ -21,10 +21,7 @@
                     <div class="col-7">
                         <div class="row pt-2">
                             <div class="col-4">
-                                <!-- <b-button v-b-modal.modal-1>Launch demo modal</b-button> -->
-                                <!-- <router-link to="/findticket" > -->
                                     <p v-b-modal.modal-1 class="nav-menu">Find Ticket</p>
-                                <!-- </router-link> -->
                                 <b-modal id="modal-1">
                                     <p class="my-4">Hey,</p>
                                     <h3>Where you want to go?</h3>
@@ -97,7 +94,7 @@
                 </div>
             </div>
             <div class="col-3 text-center d-flex">
-                <div v-if="$route.path === '/'" >
+                <div v-if="$route.path === '/login'" >
                     <router-link to="/signup">
                         <b-button class="b-SignUp pr-5 pl-5 pt-2 pb-2" type="submit" >Sign Up</b-button>
                     </router-link>

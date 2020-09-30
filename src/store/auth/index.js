@@ -17,31 +17,31 @@ const getters = {
 }
 
 const actions = {
-//   login (context, payload) {
-//     return new Promise((resolve, reject) => {
-//       axios.post(`${URL}/users/login`, payload)
-//         .then((result) => {
-//           localStorage.setItem('token', result.data.data.token)
-//           if (result.data.data.token === undefined || result.data.data.token === null) {
-//             alert('Email or password not available. Please Sign Up first')
-//             localStorage.removeItem('token')
-//             window.location = '/'
-//           } else {
-//             resolve(result.data.message)
-//           }
-//         })
-//         .catch((err) => {
-//           // eslint-disable-next-line prefer-promise-reject-errors
-//           reject(err.data.message)
-//         })
-//     })
-//   },
-//   logout (context) {
-//     return new Promise((resolve) => {
-//       localStorage.removeItem('token')
-//       resolve()
-//     })
-//   },
+  login (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.post(`${URL}/users/login`, payload)
+        .then((result) => {
+          localStorage.setItem('token', result.data.data.token)
+          if (result.data.data.token === undefined || result.data.data.token === null) {
+            alert('Email or password not available. Please Sign Up first')
+            localStorage.removeItem('token')
+            window.location = '/'
+          } else {
+            resolve(result.data.message)
+          }
+        })
+        .catch((err) => {
+          // eslint-disable-next-line prefer-promise-reject-errors
+          reject(err.data.message)
+        })
+    })
+  },
+  logout (context) {
+    return new Promise((resolve) => {
+      localStorage.removeItem('token')
+      resolve()
+    })
+  },
   register (context, payload) {
     return new Promise((resolve, reject) => {
       axios.post(`${URL}/users/register`, payload)

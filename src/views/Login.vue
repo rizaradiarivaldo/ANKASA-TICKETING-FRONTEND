@@ -12,13 +12,13 @@
         <b-col>
 <div class="login-box">
   <h4>Login</h4>
-  <form class="formRegis">
+  <form class="formRegis" @submit.prevent="LogOn" >
     <div class="user-box">
-      <input type="text" name="" required="">
+      <input type="text" v-model="form.username" required>
       <label>Username</label>
     </div>
     <div class="user-box">
-      <input type="password" name="" required="">
+      <input type="password" v-model="form.password" required>
       <label>Password</label>
     </div>
     <b-button class="mt-3 b-SignIn" type="submit" block>Sign In</b-button>
@@ -34,6 +34,33 @@
   </div>
 </template>
 
+<script>
+import { mapActions } from 'vuex'
+export default {
+  data () {
+    return {
+      form: {
+        username: null,
+        password: null
+      }
+    }
+  },
+  methods: {
+    LogOn () {
+      this.onSignIn(this.form)
+        .then((result) => {
+          alert(result)
+          window.location = '/'
+        })
+        .catch((err) => {
+          alert(err)
+          window.location = '/login'
+        })
+    },
+    ...mapActions({ onSignIn: 'Auth/login' })
+  }
+}
+</script>
 <style scoped>
 .blueBanner img {
   padding-top: 100px;
