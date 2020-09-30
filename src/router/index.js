@@ -19,20 +19,17 @@ const routes = [
   {
     path: '/forgotpass',
     name: 'ForgotPassword',
-    component: () => import('../views/ForgotPassword.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/ForgotPassword.vue')
   },
   {
     path: '/mybooking',
     name: 'Mybooking',
-    component: () => import('../views/Mybooking.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/Mybooking.vue')
   },
   {
     path: '/profile',
     name: 'Profile',
-    component: () => import('../views/Profile.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/Profile.vue')
   },
   {
     path: '/signup',
@@ -42,20 +39,17 @@ const routes = [
   {
     path: '/findticket',
     name: 'FindTicket',
-    component: () => import('../views/FindTicket.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/FindTicket.vue')
   },
   {
     path: '/editprofile',
     name: 'EditProfile',
-    component: () => import('../views/EditProfile.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/EditProfile.vue')
   },
   {
     path: '/bookingdetail',
     name: 'BookingDetail',
-    component: () => import('../views/BookingDetail.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/BookingDetail.vue')
   },
   {
     path: '/about',
