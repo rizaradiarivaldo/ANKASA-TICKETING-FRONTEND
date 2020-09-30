@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="col-3 text-center d-flex">
-                <div v-if="$route.path === '/login'" >
+                <div v-if="$route.path === '/'" >
                     <router-link to="/signup">
                         <b-button class="b-SignUp pr-5 pl-5 pt-2 pb-2" type="submit" >Sign Up</b-button>
                     </router-link>
