@@ -21,9 +21,71 @@
                     <div class="col-7">
                         <div class="row pt-2">
                             <div class="col-4">
-                                <router-link to="/findticket" active-class="selecting" class="router-link" >
-                                    <p class="nav-menu">Find Ticket</p>
-                                </router-link>
+                                <!-- <b-button v-b-modal.modal-1>Launch demo modal</b-button> -->
+                                <!-- <router-link to="/findticket" > -->
+                                    <p v-b-modal.modal-1 class="nav-menu">Find Ticket</p>
+                                <!-- </router-link> -->
+                                <b-modal id="modal-1">
+                                    <p class="my-4">Hey,</p>
+                                    <h3>Where you want to go?</h3>
+                                    <br>
+                                    <div class="recentlySearched">
+                                        <span>Recently Searched</span>
+                                        <img src="../assets/img/b-arrowModal.svg" alt="">
+                                    </div>
+                                    <div class="vacationsBox">
+                                        <div class="formAndto">
+                                            <p>From</p>
+                                            <p>To</p>
+                                        </div>
+                                        <div class="cityTocity">
+                                            <h5>Medan</h5>
+                                            <img src="../assets/img/where.svg" alt="">
+                                            <h5>Tokyo</h5>
+                                        </div>
+                                        <div class="buttonClick">
+                                            <b-button class="Oneway" type="submit">
+                                                <img src="../assets/img/planeImg.svg" alt=""> One way
+                                            </b-button>
+                                            <b-button class="RoundTrip" type="submit" style="color: #595959;">
+                                                <img src="../assets/img/roundTrip.svg" alt=""> Round Trip
+                                            </b-button>
+                                        </div>
+                                    </div>
+                                        <div class="departure">
+                                            <p>Departure</p>
+                                            <b-form-datepicker
+                                            id="datepicker-dateformat1"
+                                            :date-format-options="{ year: 'numeric', month: 'short', day: '2-digit', weekday: 'short' }"
+                                            locale="en"></b-form-datepicker>
+                                        </div>
+                                        <div class="manyperson">
+                                            <p>How many person?</p>
+                                            <div class="person">
+                                                <b-button>2 Child</b-button>
+                                                <b-button>4 Adult</b-button>
+                                            </div>
+                                        </div>
+                                        <div class="typeClass">
+                                            <p>Which class do you want?</p>
+                                            <b-form-radio-group
+                                            v-model="selected"
+                                            :options="options"
+                                            class="mb-3"
+                                            value-field="item"
+                                            text-field="name"
+                                            disabled-field="notEnabled"
+                                            ></b-form-radio-group>
+                                        </div>
+                                        <div>
+                                            <b-button class="b-SignUp pr-5 pl-5 pt-2 pb-2" block type="submit">
+                                                <div class="textinButton">
+                                                    <h4>Search Flight</h4>
+                                                    <img src="../assets/img/arrowFlight.svg" alt="">
+                                                </div>
+                                            </b-button>
+                                        </div>
+                                </b-modal>
                             </div>
                             <div class="col-8">
                                 <router-link to="/mybooking" active-class="selecting" class="router-link">
@@ -62,9 +124,9 @@
             <div class="col-6">
                 <h4 class="font-weight-bold ml-4" ><img class="mr-3" src="../assets/img/vector 02.png">Ankasa</h4>
             </div>
-            <div class="col-6">
+            <div class="col-6 alignRight">
                 <a v-b-toggle.collapse-1 >
-                    <img class="float-right mr-4" src="../assets/img/align-right.png">
+                    <img class="float-right" src="../assets/img/align-right.png">
                 </a>
             </div>
         </div>
@@ -118,10 +180,87 @@
 
 <script>
 export default {
+  data () {
+    return {
+      selected: '0',
+      options: [
+        { item: '0', name: 'Economy' },
+        { item: '1', name: 'Business' },
+        { item: '2', name: 'First Class' }
+      ]
+    }
+  }
 }
 </script>
 
 <style>
+.textinButton {
+    display: flex;
+    justify-content: space-between;
+}
+.person{
+    display: flex;
+    justify-content: space-between;
+}
+.formAndto{
+    display: flex;
+    justify-content: space-between;
+}
+.vacationsBox{
+    background: #FFFFFF;
+    box-shadow: 0px 8px 27px rgba(14, 63, 108, 0.19);
+    border-radius: 12px;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+}
+.buttonClick{
+    display: flex;
+    justify-content: space-between;
+}
+.cityTocity{
+    display: flex;
+    justify-content: space-between;
+}
+.recentlySearched{
+    display: flex;
+    justify-content: space-between;
+}
+.recentlySearched span{
+    color: #2395FF;
+}
+.modal-header{
+    display: none;
+}
+.modal-footer{
+    display: none;
+}
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.modal.show .modal-dialog {
+    position: absolute;
+}
+.modal-dialog{
+    max-width: 385px;
+    margin-left: 615px;
+    margin-top: 270px;
+
+}
+.modal-backdrop {
+     background-color: rgba(0,0,0,.0001) !important;
+}
+.modal-body {
+    padding-bottom: 5%;
+    box-shadow: 0px 8px 27px rgba(14, 63, 108, 0.19);
+    border-radius: 12px;
+}
+.modal-content{
+    border: 0px;
+}
+.alignRight img{
+    margin-right: 0px;
+}
 .b-SignUp{
   border: 1px solid #2395ff;
   background: #2395FF;
@@ -134,6 +273,16 @@ export default {
   box-shadow: 0px 8px 10px rgba(35, 149, 255, 0.3);
   color: #2395FF;
   border: 1px solid #2395ff;
+}
+.Oneway{
+  border: 1px solid #2395ff;
+  background: #2395FF;
+  border-radius: 10px;
+  padding: 0 25px;
+}
+.RoundTrip{
+    background: #F0F0F0;
+    border-radius: 6px;
 }
 .selecting-hp{
     font-weight: bold;
