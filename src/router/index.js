@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store/index'
 // import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
@@ -18,17 +19,20 @@ const routes = [
   {
     path: '/forgotpass',
     name: 'ForgotPassword',
-    component: () => import('../views/ForgotPassword.vue')
+    component: () => import('../views/ForgotPassword.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/mybooking',
     name: 'Mybooking',
-    component: () => import('../views/Mybooking.vue')
+    component: () => import('../views/Mybooking.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/profile',
     name: 'Profile',
-    component: () => import('../views/Profile.vue')
+    component: () => import('../views/Profile.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/signup',
@@ -38,17 +42,20 @@ const routes = [
   {
     path: '/findticket',
     name: 'FindTicket',
-    component: () => import('../views/FindTicket.vue')
+    component: () => import('../views/FindTicket.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/editprofile',
     name: 'EditProfile',
-    component: () => import('../views/EditProfile.vue')
+    component: () => import('../views/EditProfile.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/bookingdetail',
     name: 'BookingDetail',
-    component: () => import('../views/BookingDetail.vue')
+    component: () => import('../views/BookingDetail.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/about',
@@ -64,6 +71,20 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) { // jika ada requiresAuth TRUE di setiap path
+    if (store.getters['auth/isLogin']) { // masuk selanjutnya jika tidak ada getters di login
+      next()
+    } else {
+      next({
+        path: '/login'
+      })
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

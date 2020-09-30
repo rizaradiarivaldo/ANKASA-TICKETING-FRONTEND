@@ -31,7 +31,7 @@ const actions = {
           }
         })
         .catch((err) => {
-          // eslint-disable-next-line prefer-promise-reject-errors
+          alert('Activation needed! Check your email')
           reject(err.data.message)
         })
     })
