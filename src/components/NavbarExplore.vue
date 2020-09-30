@@ -77,13 +77,13 @@
                                             disabled-field="notEnabled"
                                             ></b-form-radio-group>
                                         </div>
-                                        <div>
-                                            <b-button class="b-SignUp pr-5 pl-5 pt-2 pb-2" block type="submit">
-                                                <div class="textinButton">
-                                                    <h4>Search Flight</h4>
+                                        <div class="b-Flight">
+                                            <router-link to="/findticket">
+                                                <b-button class="SearchFlight pr-5 pl-5 pt-2 pb-2" block type="submit">
+                                                    Search Flight
                                                     <img src="../assets/img/arrowFlight.svg" alt="">
-                                                </div>
-                                            </b-button>
+                                                    </b-button>
+                                            </router-link>
                                         </div>
                                 </b-modal>
                             </div>
@@ -112,7 +112,7 @@
                         <img src="../assets/img/bell.png">
                     </div>
                     <div class="col-4">
-                            <img class="img-thumbnail" alt="Responsive image" src="../assets/img/nnzkZNYWHaU.png">
+                        <img class="img-thumbnail" alt="Responsive image" src="../assets/img/nnzkZNYWHaU.png">
                     </div>
                 </div>
             </div>
@@ -194,6 +194,17 @@ export default {
 </script>
 
 <style>
+.img-thumbnail {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 2px solid rgba(35, 149, 255, 1) !important;
+  border-radius: 100% !important;
+  max-width: 100% !important;
+  height: auto;
+  }
+.SearchFlight{
+    text-decoration: none;
+}
 .textinButton {
     display: flex;
     justify-content: space-between;
@@ -269,6 +280,19 @@ export default {
   padding: 1px 100px;
 }
 .b-SignUp:hover{
+  background: #fff;
+  box-shadow: 0px 8px 10px rgba(35, 149, 255, 0.3);
+  color: #2395FF;
+  border: 1px solid #2395ff;
+}
+.SearchFlight{
+  border: 1px solid #2395ff;
+  background: #2395FF;
+  box-shadow: 0px 8px 10px rgba(35, 149, 255, 0.3);
+  border-radius: 10px;
+  padding: 1px 100px;
+}
+.SearchFlight:hover{
   background: #fff;
   box-shadow: 0px 8px 10px rgba(35, 149, 255, 0.3);
   color: #2395FF;
