@@ -54,20 +54,20 @@
                           <p>To</p>
                         </div>
                         <div class="cityTocity">
-                            <div>
-                                <b-form-select
+                          <div>
+                            <b-form-select
                               v-model="selected"
                               :options="options"
                             ></b-form-select>
-                              <option>Indonesia</option>
-                            </div>
+                            <option>Indonesia</option>
+                          </div>
                           <img src="../assets/img/where.svg" alt="" />
                           <div>
-                              <b-form-select
+                            <b-form-select
                               v-model="selected"
                               :options="options"
                             ></b-form-select>
-                             <option>Japan</option>
+                            <option>Japan</option>
                           </div>
                         </div>
                         <div class="buttonClick">
@@ -93,7 +93,7 @@
                             year: 'numeric',
                             month: 'short',
                             day: '2-digit',
-                            weekday: 'short',
+                            weekday: 'short'
                           }"
                           locale="en"
                         ></b-form-datepicker>
@@ -231,6 +231,8 @@
                 <b-button class="b-SignUp pr-5 pl-5 pt-2 pb-2" type="submit"
                   >Sign Up</b-button
                 >
+                 <p v-for="(item, index) in Cities.data" :key="index">{{item}}</p>
+                >
               </router-link>
             </div>
             <div v-else class="row align-items-center">
@@ -259,7 +261,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -270,28 +272,34 @@ export default {
         { item: '1', name: 'Business' },
         { item: '2', name: 'First Class' }
       ],
-      form: {
-
-      }
+      form: {}
     }
   },
   methods: {
     getTicket () {
       this.onTicket(this.form)
-        .then((result) => {
+        .then(result => {
           alert(result)
           window.location = '/'
         })
-        .catch((err) => {
+        .catch(err => {
           alert(err)
-        //   window.location = '/login'
+          //   window.location = '/login'
         })
-    }
+    },
+    ...mapActions(
+      {
+        getCities: 'cities/getCities'
+      }
+    )
   },
   computed: {
     ...mapGetters({
-      cities: 'city/allcities'
+      Cities: 'cities/getCities'
     })
+  },
+  created () {
+    this.getCities()
   }
 }
 </script>
