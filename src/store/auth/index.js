@@ -30,15 +30,17 @@ const actions = {
           window.location = '/'
           resolve(result.data.message)
         })
-        .catch(() => {
-          alert('Wrong email or password!')
+        .catch((err) => {
+          alert(err)
+          // alert('Wrong email or password!')
+          reject(err.data.message)
         })
     })
   },
   logout (context) {
     return new Promise((resolve) => {
       localStorage.removeItem('token')
-      resolve()
+      resolve('Logout Success')
     })
   },
   register (context, payload) {
