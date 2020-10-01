@@ -30,9 +30,8 @@ const actions = {
           window.location = '/'
           resolve(result.data.message)
         })
-        .catch((err) => {
+        .catch(() => {
           alert('Wrong email or password!')
-          reject(err.data.message)
         })
     })
   },

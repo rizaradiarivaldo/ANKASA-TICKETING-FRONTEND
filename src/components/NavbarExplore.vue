@@ -47,7 +47,7 @@
                       <span>Recently Searched</span>
                       <img src="../assets/img/b-arrowModal.svg" alt="" />
                     </div>
-                    <form @submit.prevent="getTicket">
+                    <form @submit.prevent="searchFlight()">
                       <div class="vacationsBox">
                         <div class="formAndto">
                           <p>From</p>
@@ -55,30 +55,26 @@
                         </div>
                         <div class="cityTocity">
                           <div>
-                            <b-form-select
-                              v-model="selected"
-                              :options="options"
-                            ></b-form-select>
-                            <option>Indonesia</option>
+                            <select v-model="fromCity" class="form-control">
+                            <option v-for="(item, index) in Cities.data" :key="index" :value="item.name">{{item.name}}</option>
+                            </select>
                           </div>
                           <img src="../assets/img/where.svg" alt="" />
                           <div>
-                            <b-form-select
-                              v-model="selected"
-                              :options="options"
-                            ></b-form-select>
-                            <option>Japan</option>
+                            <select v-model="toCity" class="form-control">
+                            <option v-for="(item, index) in Cities.data" :key="index" :value="item.name">{{item.name}}</option>
+                            </select>
                           </div>
                         </div>
                         <div class="buttonClick">
-                          <b-button class="Oneway" type="submit">
+                          <b-button class="Oneway" @click="typeflight(0)">
                             <img src="../assets/img/planeImg.svg" alt="" /> One
                             way
                           </b-button>
                           <b-button
                             class="RoundTrip"
-                            type="submit"
                             style="color: #595959"
+                             @click="typeflight(1)"
                           >
                             <img src="../assets/img/roundTrip.svg" alt="" />
                             Round Trip
@@ -96,19 +92,20 @@
                             weekday: 'short'
                           }"
                           locale="en"
+                          v-model="date_departure"
                         ></b-form-datepicker>
                       </div>
                       <div class="manyperson">
                         <p>How many person?</p>
                         <div class="person">
-                          <b-input type="text" placeholder="Child"></b-input>
-                          <b-input type="text" placeholder="Adult"></b-input>
+                          <b-input type="number" placeholder="Child" v-model="child"></b-input>
+                          <b-input type="number" placeholder="Adult" v-model="adult"></b-input>
                         </div>
                       </div>
                       <div class="typeClass">
                         <p>Which class do you want?</p>
                         <b-form-radio-group
-                          v-model="selected"
+                          v-model="classFlight"
                           :options="options"
                           class="mb-3"
                           value-field="item"
@@ -117,7 +114,6 @@
                         ></b-form-radio-group>
                       </div>
                       <div class="b-Flight">
-                        <router-link to="/findticket">
                           <b-button
                             class="SearchFlight pr-5 pl-5 pt-2 pb-2"
                             block
@@ -126,7 +122,6 @@
                             Search Flight
                             <img src="../assets/img/arrowFlight.svg" alt="" />
                           </b-button>
-                        </router-link>
                       </div>
                     </form>
                   </b-modal>
@@ -231,8 +226,6 @@
                 <b-button class="b-SignUp pr-5 pl-5 pt-2 pb-2" type="submit"
                   >Sign Up</b-button
                 >
-                 <p v-for="(item, index) in Cities.data" :key="index">{{item}}</p>
-                >
               </router-link>
             </div>
             <div v-else class="row align-items-center">
@@ -267,31 +260,55 @@ export default {
     return {
       token: localStorage.getItem('token') || null,
       selected: '0',
+      form: {},
       options: [
         { item: '0', name: 'Economy' },
         { item: '1', name: 'Business' },
         { item: '2', name: 'First Class' }
       ],
-      form: {}
+      fromCity: '',
+      toCity: '',
+      typeFlight: null,
+      date_departure: null,
+      child: null,
+      adult: null,
+      classFlight: null
     }
   },
   methods: {
-    getTicket () {
-      this.onTicket(this.form)
-        .then(result => {
-          alert(result)
-          window.location = '/'
-        })
-        .catch(err => {
-          alert(err)
-          //   window.location = '/login'
-        })
+    // getTicket () {
+    //   this.onTicket(this.form)
+    //     .then(result => {
+    //       alert(result)
+    //       window.location = '/'
+    //     })
+    //     .catch(err => {
+    //       alert(err)
+    //       //   window.location = '/login'
+    //     })
+    // },
+    searchFlight () {
+      // const form = {
+      //   fromcity: this.fromCity,
+      //   tocity: this.toCity,
+      //   typeFlight: this.typeFlight,
+      //   datedeparture: this.date_departure,
+      //   classflight: this.classFlight,
+      //   child: this.child,
+      //   adult: this.adult
+      // }
+      // this.getFlight(form)
+      window.location = '/findticket'
     },
     ...mapActions(
       {
+        getFlight: 'flight/getFlight',
         getCities: 'cities/getCities'
       }
-    )
+    ),
+    typeflight (id) {
+      this.typeFlight = id
+    }
   },
   computed: {
     ...mapGetters({
