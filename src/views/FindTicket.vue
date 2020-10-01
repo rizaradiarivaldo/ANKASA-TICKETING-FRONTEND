@@ -207,85 +207,34 @@
                 <p>Select Ticket <span class="color-second" >(6 flight found)</span></p>
                 <p class="ml-auto" >Sort by <img class="ml-2" src="../assets/img/Vectorsort.png"></p>
               </div>
-              <div class="card mb-4 pl-2">
+              <div class="card mb-4 pl-2" v-for="(item, index) in getFlight" :key="index">
                 <div class="card-body">
-                  <p class="color-third mb-4" ><img class="mr-4" src="../assets/img/garuda-indonesia-logo-BD82882F07-seeklogo 1.png">Garuda Indonesia</p>
+                  <p class="color-third mb-4" ><img class="mr-4" :src="`${url}/${item.image}`">{{item.airlanes_name}}</p>
                   <div>
                     <div class="d-flex mb-2">
                       <div class="d-block mr-5">
-                      <h4 class="font-weight-bold" >IDN <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> JPN</h4>
+                      <h4 class="font-weight-bold" >{{item.fromcountry}} <img src="../assets/img/Vector (3).png" alt=""> {{item.tocountry}}</h4>
                       <div class="d-flex font-size-12 color-second">
-                          <p>12:33</p>
-                          <p class="ml-auto" >15:21</p>
+                          <p>{{item.departure}}</p>
+                          <p class="ml-auto" >{{item.arrived}}</p>
                       </div>
                     </div>
                     <div class="d-block pt-1 mr-5">
                       <h6 class="font-weight-bold color-second" >3 hours 11 minutes</h6>
-                      <p class="text-center font-size-12 color-second" >(1 transit)</p>
+                      <p class="text-center font-size-12 color-second" v-if="item.direct===1">Direct</p>
+                      <p class="text-center font-size-12 color-second" v-else-if="item.transit===1">(1 transit)</p>
+                      <p class="text-center font-size-12 color-second" v-else-if="item.more_transit===1">(transit 2+)</p>
+                      <p class="text-center font-size-12 color-second" v-else></p>
                     </div>
                     <div class="d-inline mt-3 mr-5">
-                      <img class="mr-3" src="../assets/img/Vector (7).png">
-                      <img class="mr-3" src="../assets/img/Vector (8).png">
-                      <img class="mr-3" src="../assets/img/Vector (9).png">
+                      <img class="mr-3" v-if="item.luggage===1" src="../assets/img/Vector (7).png">
+                      <img class="mr-3" v-if="item.meal===1" src="../assets/img/Vector (8).png">
+                      <img class="mr-3" v-if="item.wifi===1" src="../assets/img/Vector (9).png">
                     </div>
-                    <p class="color-second mt-3 mr-5"><span class="color-default" >$ 214,00 </span>/pax</p>
-                    <b-button class="b-Save ml-auto mr-2" type="submit">Select</b-button>
+                    <p class="color-second mt-3 mr-5"><span class="color-default" >Rp.{{item.price}}</span></p>
+                    <b-button class="b-Save ml-auto mr-2" type="submit" @click="cek(item.id)">Select</b-button>
                     </div>
-                    <p class="font-weight-bold color-default" >View Details <img class="ml-2" src="../assets/img/btnback.png"></p>
-                  </div>
-                </div>
-              </div>
-              <div class="card mb-4 pl-2">
-                <div class="card-body">
-                  <p class="color-third mb-4" ><img class="mr-4" src="../assets/img/AIR ASIA 1 1.png">Airasia</p>
-                  <div>
-                    <div class="d-flex mb-2">
-                      <div class="d-block mr-5">
-                      <h4 class="font-weight-bold" >IDN <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> JPN</h4>
-                      <div class="d-flex font-size-12 color-second">
-                          <p>12:33</p>
-                          <p class="ml-auto" >15:21</p>
-                      </div>
-                    </div>
-                    <div class="d-block pt-1 mr-5">
-                      <h6 class="font-weight-bold color-second" >3 hours 11 minutes</h6>
-                      <p class="text-center font-size-12 color-second" >(1 transit)</p>
-                    </div>
-                    <div class="d-inline mt-3 mr-5">
-                      <img class="mr-3" src="../assets/img/Vector (7).png">
-                      <img class="mr-3" src="../assets/img/Vector (8).png">
-                    </div>
-                    <p class="color-second mt-3"><span class="color-default" >$ 214,00 </span>/pax</p>
-                    <b-button class="b-Save ml-auto mr-2" type="submit">Select</b-button>
-                    </div>
-                    <p class="font-weight-bold color-default" >View Details <img class="ml-2" src="../assets/img/btnback.png"></p>
-                  </div>
-                </div>
-              </div>
-              <div class="card mb-4 pl-2">
-                <div class="card-body">
-                  <p class="color-third mb-4" ><img class="mr-4" src="../assets/img/Lion_Air_logo_logotype 1.png">LionAir</p>
-                  <div>
-                    <div class="d-flex mb-2">
-                      <div class="d-block mr-5">
-                      <h4 class="font-weight-bold" >IDN <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> JPN</h4>
-                      <div class="d-flex font-size-12 color-second">
-                          <p>12:33</p>
-                          <p class="ml-auto" >15:21</p>
-                      </div>
-                    </div>
-                    <div class="d-block pt-1 mr-5">
-                      <h6 class="font-weight-bold color-second" >3 hours 11 minutes</h6>
-                      <p class="text-center font-size-12 color-second" >(1 transit)</p>
-                    </div>
-                    <div class="d-inline mt-3 mr-5">
-                      <img class="mr-3" src="../assets/img/Vector (7).png">
-                      <img class="mr-3" src="../assets/img/Vector (8).png">
-                    </div>
-                    <p class="color-second mt-3 mr-5"><span class="color-default" >$ 214,00 </span>/pax</p>
-                    <b-button class="b-Save ml-auto mr-2" type="submit">Select</b-button>
-                    </div>
-                    <p class="font-weight-bold color-default" >View Details <img class="ml-2" src="../assets/img/btnback.png"></p>
+                    <p class="font-weight-bold color-default" >View Details<img class="ml-2" src="../assets/img/btnback.png"></p>
                   </div>
                 </div>
               </div>
@@ -297,12 +246,35 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 export default {
   components: {
     Navbar,
     Footer
+  },
+  data () {
+    return {
+      url: process.env.VUE_APP_API_URL
+    }
+  },
+  methods: {
+    ...mapActions({
+      getAllFlight: 'flight/getFlight'
+    }),
+    cek (id) {
+      alert(id)
+    }
+  },
+  computed: {
+    ...mapGetters({
+      getFlight: 'flight/getFlight'
+    })
+  },
+  mounted () {
+    this.getAllFlight()
   }
 }
 </script>

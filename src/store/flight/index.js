@@ -25,7 +25,7 @@ const actions = {
       axios.get(URL + '/flight/getall')
         .then((response) => {
           console.log(response)
-          // context.commit('SET_DATA_FLIGHT', response.data.data)
+          context.commit('SET_DATA_FLIGHT', response.data.data)
         }).catch((err) => {
           console.log(err)
         })
