@@ -22,9 +22,8 @@ const mutations = {
 const actions = {
   getFlight (context, payload) {
     return new Promise((resolve, reject) => {
-      axios.get(URL + '/flight/getall')
+      axios.get(URL + `/flight/getall?fromcity=${payload.fromcity}&tocity=${payload.tocity}&typeflight=${payload.typeflight}&child=${payload.child}&adult=${payload.adult}&classflight=${payload.classflight}&datedeparture=${payload.datedeparture}`)
         .then((response) => {
-          console.log(response)
           context.commit('SET_DATA_FLIGHT', response.data.data)
         }).catch((err) => {
           console.log(err)

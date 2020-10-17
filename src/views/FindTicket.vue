@@ -9,16 +9,16 @@
               <p class="ml-auto" >To</p>
             </div>
             <div class="d-flex text-country w-100">
-              <p>Medan(IDN)</p>
+              <p>{{fromcity}}({{fromalias}})</p>
               <div class="text-center w-100">
                 <img src="../assets/img/Vector (1).svg">
               </div>
-              <p class="ml-auto" >Tokyo(JPN)</p>
+              <p class="ml-auto" >{{tocity}}({{toalias}})</p>
             </div>
             <div class="d-flex w-100 text-detail align-items-center">
-            <p>Monday, 20 July 20</p>
+            <p>{{datedeparture}}</p>
             <div class="bg-white dot" ></div>
-            <p>6 Passenger</p>
+            <p>{{parseInt(adult) + parseInt(child)}} Passenger</p>
             <div class="bg-white dot" ></div>
             <p>Economy</p>
             </div>
@@ -204,23 +204,25 @@
             </div>
             <div class="col-9 pl-4">
               <div class="d-flex">
-                <p>Select Ticket <span class="color-second" >(6 flight found)</span></p>
+                <p>Select Ticket <span class="color-second" >({{getFlight.length}} flight found) </span></p>
                 <p class="ml-auto" >Sort by <img class="ml-2" src="../assets/img/Vectorsort.png"></p>
               </div>
               <div class="card mb-4 pl-2" v-for="(item, index) in getFlight" :key="index">
                 <div class="card-body">
-                  <p class="color-third mb-4" ><img class="mr-4" :src="`${url}/${item.image}`">{{item.airlanes_name}}</p>
+                  <p class="color-third mb-4" ><img class="mr-4" width="48px" :src="`${url}/${item.imageairlines}`">{{item.nameairlines}}</p>
                   <div>
                     <div class="d-flex mb-2">
                       <div class="d-block mr-5">
-                      <h4 class="font-weight-bold" >{{item.fromcountry}} <img src="../assets/img/Vector (3).png" alt=""> {{item.tocountry}}</h4>
+                      <h4 class="font-weight-bold" >{{item.fromalias}} <img src="../assets/img/Vector (3).png" alt=""> {{item.toalias}}</h4>
                       <div class="d-flex font-size-12 color-second">
-                          <p>{{item.departure}}</p>
-                          <p class="ml-auto" >{{item.arrived}}</p>
+                          <p>{{item.departure.slice(0,5)}}</p>
+                          <p class="ml-auto" >{{item.arrived.slice(0,5)}}</p>
                       </div>
                     </div>
                     <div class="d-block pt-1 mr-5">
-                      <h6 class="font-weight-bold color-second" >3 hours 11 minutes</h6>
+                      <h6 class="font-weight-bold color-second" >
+                        {{ parseInt(item.arrived) - parseInt(item.departure) }} hours {{parseInt(item.arrived.slice(3,5)) - parseInt(item.departure.slice(3,5))}} minutes
+                      </h6>
                       <p class="text-center font-size-12 color-second" v-if="item.direct===1">Direct</p>
                       <p class="text-center font-size-12 color-second" v-else-if="item.transit===1">(1 transit)</p>
                       <p class="text-center font-size-12 color-second" v-else-if="item.more_transit===1">(transit 2+)</p>
@@ -231,10 +233,10 @@
                       <img class="mr-3" v-if="item.meal===1" src="../assets/img/Vector (8).png">
                       <img class="mr-3" v-if="item.wifi===1" src="../assets/img/Vector (9).png">
                     </div>
-                    <p class="color-second mt-3 mr-5"><span class="color-default" >Rp.{{item.price}}</span></p>
+                    <p class="color-second mt-3 mr-5"><span class="color-default" >$ {{item.price}},00/pax</span></p>
                     <b-button class="b-Save ml-auto mr-2" type="submit" @click="cek(item.id)">Select</b-button>
                     </div>
-                    <p class="font-weight-bold color-default" >View Details<img class="ml-2" src="../assets/img/btnback.png"></p>
+                    <p class="font-weight-bold color-default" >View Details  <img class="ml-2" src="../assets/img/btnback.png"></p>
                   </div>
                 </div>
               </div>
@@ -257,7 +259,15 @@ export default {
   },
   data () {
     return {
-      url: process.env.VUE_APP_API_URL
+      url: process.env.VUE_APP_API_URL,
+      fromcity: localStorage.getItem('fromcity'),
+      tocity: localStorage.getItem('tocity'),
+      fromalias: localStorage.getItem('fromalias'),
+      toalias: localStorage.getItem('toalias'),
+      child: localStorage.getItem('child'),
+      adult: localStorage.getItem('adult'),
+      datedeparture: localStorage.getItem('datedeparture'),
+      classflight: localStorage.getItem('classflight')
     }
   },
   methods: {
@@ -274,7 +284,17 @@ export default {
     })
   },
   mounted () {
-    this.getAllFlight()
+    const form = {
+      fromcity: localStorage.getItem('fromcity'),
+      tocity: localStorage.getItem('tocity'),
+      typeflight: localStorage.getItem('typeflight'),
+      child: localStorage.getItem('child'),
+      adult: localStorage.getItem('adult'),
+      classflight: localStorage.getItem('classflight'),
+      datedeparture: localStorage.getItem('datedeparture')
+    }
+    this.getAllFlight(form)
+    console.log(this.getFlight)
   }
 }
 </script>

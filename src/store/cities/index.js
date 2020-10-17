@@ -27,7 +27,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.get(URL + '/cities/getAll')
         .then((response) => {
-          console.log(response)
           context.commit('SET_ALL_DATA_CITIES', response.data.data)
         }).catch((err) => {
           console.log(err)

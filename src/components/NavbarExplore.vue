@@ -56,14 +56,16 @@
                         <div class="cityTocity">
                           <div>
                             <select v-model="fromCity" class="form-control">
-                            <option v-for="(item, index) in Cities.data" :key="index" :value="item.name">{{item.name}}</option>
+                            <option v-for="(item, index) in Cities.data" :key="index" :value="{namecity:item.namecity,alias:item.alias}">{{item.namecity}}</option>
                             </select>
+                            <!-- <p>{{item.namecountries}}</p> -->
                           </div>
                           <img src="../assets/img/where.svg" alt="" />
                           <div>
                             <select v-model="toCity" class="form-control">
-                            <option v-for="(item, index) in Cities.data" :key="index" :value="item.name">{{item.name}}</option>
+                            <option v-for="(item, index) in Cities.data" :key="index" :value="{namecity:item.namecity,alias:item.alias}">{{item.namecity}}</option>
                             </select>
+                             <!-- <p>{{item.namecountries}}</p> -->
                           </div>
                         </div>
                         <div class="buttonClick">
@@ -96,7 +98,7 @@
                         ></b-form-datepicker>
                       </div>
                       <div class="manyperson">
-                        <p>How many person?</p>
+                        <p>How many person? {{classFlight}}</p>
                         <div class="person">
                           <b-input type="number" placeholder="Child" v-model="child"></b-input>
                           <b-input type="number" placeholder="Adult" v-model="adult"></b-input>
@@ -266,8 +268,8 @@ export default {
         { item: '1', name: 'Business' },
         { item: '2', name: 'First Class' }
       ],
-      fromCity: '',
-      toCity: '',
+      fromCity: null,
+      toCity: null,
       typeFlight: null,
       date_departure: null,
       child: null,
@@ -291,13 +293,21 @@ export default {
       // const form = {
       //   fromcity: this.fromCity,
       //   tocity: this.toCity,
-      //   typeFlight: this.typeFlight,
-      //   datedeparture: this.date_departure,
-      //   classflight: this.classFlight,
+      //   typeflight: this.typeFlight,
       //   child: this.child,
-      //   adult: this.adult
+      //   adult: this.adult,
+      //   classflight: this.classFlight,
+      //   datedeparture: this.date_departure
       // }
-      // this.getFlight(form)
+      localStorage.setItem('fromcity', this.fromCity.namecity)
+      localStorage.setItem('fromalias', this.fromCity.alias)
+      localStorage.setItem('tocity', this.toCity.namecity)
+      localStorage.setItem('toalias', this.toCity.alias)
+      localStorage.setItem('typeflight', this.typeFlight === null ? 0 : this.typeFlight)
+      localStorage.setItem('child', this.child)
+      localStorage.setItem('adult', this.adult)
+      localStorage.setItem('classflight', this.classFlight)
+      localStorage.setItem('datedeparture', this.date_departure)
       window.location = '/findticket'
     },
     ...mapActions(
@@ -315,7 +325,7 @@ export default {
       Cities: 'cities/getCities'
     })
   },
-  created () {
+  mounted () {
     this.getCities()
   }
 }
