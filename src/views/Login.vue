@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="token === null">
     <b-row class="conta">
       <b-col lg="7" class="blueBanner">
         <img src="../assets/img/logo1.svg" alt="">

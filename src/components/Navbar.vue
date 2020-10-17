@@ -97,7 +97,7 @@
                     </router-link>
                 </div>
                 <div class="col-12 text-center mb-3">
-                  <div v-if="$route.path === '/'" >
+                  <div v-if="$route.path === '/' && token === null" >
                     <router-link to="/signup">
                         <b-button class="b-SignUp pr-5 pl-5 pt-2 pb-2" type="submit" >Sign Up</b-button>
                     </router-link>
