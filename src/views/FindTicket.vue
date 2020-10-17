@@ -20,7 +20,9 @@
             <div class="bg-white dot" ></div>
             <p>{{parseInt(adult) + parseInt(child)}} Passenger</p>
             <div class="bg-white dot" ></div>
-            <p>Economy</p>
+            <p v-if="classflight==0">Economy</p>
+            <p v-else-if="classflight==1">Bussiness</p>
+            <p v-else-if="classflight==2">First Class</p>
             </div>
           </div>
           <p class="text-white ml-auto mr-5" >Change Search</p>
@@ -234,7 +236,9 @@
                       <img class="mr-3" v-if="item.wifi===1" src="../assets/img/Vector (9).png">
                     </div>
                     <p class="color-second mt-3 mr-5"><span class="color-default" >$ {{item.price}},00/pax</span></p>
-                    <b-button class="b-Save ml-auto mr-2" type="submit" @click="cek(item.id)">Select</b-button>
+                    <router-link  to="/bookingdetail">
+                    <b-button class="b-Save ml-auto mr-2" type="submit" @click="cek(item.idflight)">Select</b-button>
+                    </router-link>
                     </div>
                     <p class="font-weight-bold color-default" >View Details  <img class="ml-2" src="../assets/img/btnback.png"></p>
                   </div>
@@ -274,8 +278,8 @@ export default {
     ...mapActions({
       getAllFlight: 'flight/getFlight'
     }),
-    cek (id) {
-      alert(id)
+    cek (item) {
+      alert(item)
     }
   },
   computed: {
