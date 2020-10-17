@@ -21,8 +21,8 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(`${URL}/users/login`, payload)
         .then((result) => {
-          console.log(result.data)
           localStorage.setItem('token', result.data.data.token)
+          localStorage.setItem('idusers', result.data.data.idusers)
           resolve(result.data.message)
         })
         .catch((err) => {
