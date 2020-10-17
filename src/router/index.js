@@ -51,6 +51,12 @@ const routes = [
     // meta: { requiresAuth: true }
   },
   {
+    path: '/flightdetail',
+    name: 'FlightDetail',
+    component: () => import('../views/FlightDetail.vue')
+    // meta: { requiresAuth: true }
+  },
+  {
     path: '/editprofile',
     name: 'EditProfile',
     component: () => import('../views/EditProfile.vue')

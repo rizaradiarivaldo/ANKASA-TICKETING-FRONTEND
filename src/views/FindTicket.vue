@@ -236,7 +236,7 @@
                       <img class="mr-3" v-if="item.wifi===1" src="../assets/img/Vector (9).png">
                     </div>
                     <p class="color-second mt-3 mr-5"><span class="color-default" >$ {{item.price}},00/pax</span></p>
-                    <router-link  to="/">
+                    <router-link  to="/flightdetail">
                     <b-button class="b-Save ml-auto mr-2" type="submit" @click="cek(item.idflight)">Select</b-button>
                     </router-link>
                     </div>

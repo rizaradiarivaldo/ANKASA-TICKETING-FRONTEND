@@ -61,7 +61,7 @@ export default {
     LogOn () {
       this.onSignIn(this.form)
         .then((result) => {
-          window.location = '/'
+          // window.location = '/'
         })
         .catch((err) => {
           alert(err)
