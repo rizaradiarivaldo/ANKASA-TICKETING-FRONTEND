@@ -24,20 +24,20 @@ const routes = [
   {
     path: '/mybooking',
     name: 'Mybooking',
-    component: () => import('../views/Mybooking.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/Mybooking.vue')
+    // meta: { requiresAuth: true }
   },
   {
     path: '/booking',
     name: 'Booking',
-    component: () => import('../views/FlightDetail.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/FlightDetail.vue')
+    // meta: { requiresAuth: true }
   },
   {
     path: '/profile',
     name: 'Profile',
-    component: () => import('../views/Profile.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/Profile.vue')
+    // meta: { requiresAuth: true }
   },
   {
     path: '/signup',
@@ -47,20 +47,20 @@ const routes = [
   {
     path: '/findticket',
     name: 'FindTicket',
-    component: () => import('../views/FindTicket.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/FindTicket.vue')
+    // meta: { requiresAuth: true }
   },
   {
     path: '/editprofile',
     name: 'EditProfile',
-    component: () => import('../views/EditProfile.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/EditProfile.vue')
+    // meta: { requiresAuth: true }
   },
   {
     path: '/bookingdetail',
     name: 'BookingDetail',
-    component: () => import('../views/BookingDetail.vue'),
-    meta: { requiresAuth: true }
+    component: () => import('../views/BookingDetail.vue')
+    // meta: { requiresAuth: true }
   },
   {
     path: '/about',
@@ -68,8 +68,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    meta: { requiresAuth: true }
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    // meta: { requiresAuth: true }
   }
 ]
 
@@ -80,8 +80,8 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) { // jika ada requiresAuth TRUE di setiap path
-    if (store.getters['auth/isLogin']) { // masuk selanjutnya jika tidak ada getters di login
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters['auth/isLogin']) {
       next()
     } else {
       next({

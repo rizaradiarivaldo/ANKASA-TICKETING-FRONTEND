@@ -1,33 +1,45 @@
 <template>
-  <div v-if="token === null">
+  <div>
     <b-row class="conta">
       <b-col lg="7" class="blueBanner">
-        <img src="../assets/img/logo1.svg" alt="">
+        <img src="../assets/img/logo1.svg" alt="" />
       </b-col>
       <b-col lg="5" class="formBanner">
         <b-col class="row formTitle">
-        <img src="../assets/img/blueairlines.svg">
-        <h5>Ankasa</h5>
+          <img src="../assets/img/blueairlines.svg" />
+          <h5>Ankasa</h5>
         </b-col>
         <b-col>
-<div class="login-box">
-  <h4>Login</h4>
-  <form class="formRegis" @submit.prevent="LogOn" >
-    <div class="user-box">
-      <input type="text" v-model="form.username" required>
-      <label>Username</label>
-    </div>
-    <div class="user-box">
-      <input type="password" v-model="form.password" required>
-      <label>Password</label>
-    </div>
-    <b-button class="mt-3 b-SignIn" type="submit" block>Sign In</b-button>
-  </form>
-  <br>
-  <p style="color: #4D4D4D; text-align: center; padding-bottom: 0px; margin-bottom: 0px">Did you forgot password?</p>
-  <a style="margin-left: 65px" href="/forgotpass">Tap here for reset</a>
-
-</div>
+          <div class="login-box">
+            <h4>Login</h4>
+            <form class="formRegis" @submit.prevent="LogOn">
+              <div class="user-box">
+                <input type="text" v-model="form.username" required />
+                <label>Username</label>
+              </div>
+              <div class="user-box">
+                <input type="password" v-model="form.password" required />
+                <label>Password</label>
+              </div>
+              <b-button class="mt-3 b-SignIn" type="submit" block
+                >Sign In</b-button
+              >
+            </form>
+            <br />
+            <p
+              style="
+                color: #4d4d4d;
+                text-align: center;
+                padding-bottom: 0px;
+                margin-bottom: 0px;
+              "
+            >
+              Did you forgot password?
+            </p>
+            <a style="margin-left: 65px" href="/forgotpass"
+              >Tap here for reset</a
+            >
+          </div>
         </b-col>
       </b-col>
     </b-row>
@@ -49,12 +61,10 @@ export default {
     LogOn () {
       this.onSignIn(this.form)
         .then((result) => {
-          alert(result)
           window.location = '/'
         })
         .catch((err) => {
           alert(err)
-          window.location = '/login'
         })
     },
     ...mapActions({ onSignIn: 'Auth/login' })
@@ -79,7 +89,7 @@ export default {
   margin-right: 0px;
 }
 .blueBanner {
-  background: #2395FF;
+  background: #2395ff;
   height: 100vh;
 }
 /* .b-Signin {
@@ -96,17 +106,17 @@ export default {
   color: #fff;
   border: 1px solid #2395ff;
 } */
-.b-SignIn{
+.b-SignIn {
   border: 1px solid #2395ff;
-  background: #2395FF;
+  background: #2395ff;
   box-shadow: 0px 8px 10px rgba(35, 149, 255, 0.3);
   border-radius: 10px;
   padding: 10px;
 }
-.b-SignIn:hover{
+.b-SignIn:hover {
   background: #fff;
   box-shadow: 0px 8px 10px rgba(35, 149, 255, 0.3);
-  color: #2395FF;
+  color: #2395ff;
   border: 1px solid #2395ff;
 }
 .login-box {
@@ -141,13 +151,13 @@ export default {
 }
 .login-box .user-box label {
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   padding: 10px 0;
   font-size: 15px;
-  color: #9B96AB;
+  color: #9b96ab;
   pointer-events: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .login-box .user-box input:focus ~ label,
@@ -156,7 +166,7 @@ export default {
   left: 0;
   font-size: 10px;
 }
-@media screen and (max-width: 375px){
+@media screen and (max-width: 375px) {
   .blueBanner {
     display: none;
   }

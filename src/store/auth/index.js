@@ -8,10 +8,10 @@ const state = () => {
 }
 const getters = {
   isLogin (state) {
-    if (state.token === null) {
-      return false
-    } else {
+    if (state.token !== null) {
       return true
+    } else {
+      return false
     }
   }
 }
@@ -21,18 +21,12 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(`${URL}/users/login`, payload)
         .then((result) => {
+          console.log(this.state)
           localStorage.setItem('token', result.data.data.token)
-          // if (result.data.data.token === undefined || result.data.data.token === null) {
-          //   alert('Email or password not available. Please Sign Up first')
-          //   localStorage.removeItem('token')
-          // } else {
-          // }
-          window.location = '/'
           resolve(result.data.message)
         })
         .catch((err) => {
           alert(err)
-          // alert('Wrong email or password!')
           reject(err.data.message)
         })
     })
