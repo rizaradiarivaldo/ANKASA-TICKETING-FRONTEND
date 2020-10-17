@@ -8,7 +8,7 @@ const state = () => {
 }
 const getters = {
   isLogin (state) {
-    if (state.token == null) {
+    if (state.token === null) {
       return false
     } else {
       return true
