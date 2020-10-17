@@ -298,7 +298,6 @@ export default {
       datedeparture: localStorage.getItem('datedeparture')
     }
     this.getAllFlight(form)
-    console.log(this.getFlight)
   }
 }
 </script>

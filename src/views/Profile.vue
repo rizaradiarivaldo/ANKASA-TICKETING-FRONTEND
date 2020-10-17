@@ -18,7 +18,7 @@
                     <div class="login-box">
                     <form>
                       <div class="user-box">
-                        <input type="text" name="" required="">
+                        <input type="text" v-model="form.email" name="" required="">
                         <label>Email</label>
                       </div>
                       <div class="user-box">
@@ -79,6 +79,7 @@
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import CardProfile from '@/components/CardProfile.vue'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   components: {
     Navbar,
@@ -87,7 +88,15 @@ export default {
   },
   data () {
     return {
-      selected: true
+      selected: true,
+      form: {
+        email: null,
+        phone: null,
+        username: null,
+        city: null,
+        address: null,
+        postcode: null
+      }
     }
   },
   methods: {
@@ -97,7 +106,18 @@ export default {
       } else {
         this.selected = true
       }
-    }
+    },
+    ...mapActions({
+      actionGetUser: 'users/getUser'
+    })
+  },
+  computed: {
+    ...mapGetters({
+      getuser: 'users/getUser'
+    })
+  },
+  mounted () {
+    this.actionGetUser()
   }
 }
 </script>
