@@ -41,7 +41,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.get(URL + `/flight/getDetail/${payload}`)
         .then((response) => {
-          console.log(response.data.data[0])
           context.commit('SET_DETAIL_FLIGHT', response.data.data[0])
         }).catch((err) => {
           console.log(err)

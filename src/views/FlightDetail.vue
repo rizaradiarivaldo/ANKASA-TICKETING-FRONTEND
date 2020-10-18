@@ -19,7 +19,7 @@
                 <div class="form-box">
                 <form>
                 <div class="user-box">
-                    <input type="text" v-model="form.username" name="" required="" />
+                    <input type="text" v-model="form.fullname" name="" required="" />
                     <label>Full Name</label>
                 </div>
                 <div class="user-box">
@@ -29,12 +29,19 @@
                 <div class="row">
                     <div class="col-3">
                       <div class="user-box">
-                          <select required v-model="form.countryCode">
-                          <option selected>+ 62</option>
-                          <option>+ 63</option>
-                          <option>+ 64</option>
-                          <option>+ 65</option>
-                          <option>+ 66</option>
+                          <!-- <select name="" id="" v-model="form.countryCode">
+                          <option value="+63">+ 63</option>
+                          <option value="+64">+ 64</option>
+                          <option value="+65">+ 65</option>
+                          <option value="+66">+ 66</option>
+                          </select> -->
+
+                          <select name="" id="" required v-model="form.countryCode">
+                            <option value="+62">+ 62</option>
+                            <option value="+63">+ 63</option>
+                            <option value="+64">+ 64</option>
+                            <option value="+65">+ 65</option>
+                            <option value="+66">+ 66</option>
                           </select>
                           <label>Country Code</label>
                       </div>
@@ -78,13 +85,12 @@
                     <select required>
                     <option selected></option>
                     <option>Mr.</option>
-                    <option>Mr.</option>
-                    <option>Mr.</option>
+                    <option>Mrs.</option>
                     </select>
                     <label>Title</label>
                 </div>
                 <div class="user-box">
-                    <input type="text" name="" required="" />
+                    <input type="text" v-model="form.fullname" name="" required="" />
                     <label>Full Name</label>
                 </div>
                 <div class="user-box">
@@ -167,10 +173,12 @@ export default {
     return {
       URL,
       form: {
-        username: null,
+        fullname: null,
         email: null,
-        countryCode: null,
-        phone: null
+        countryCode: '+62',
+        phone: null,
+        title: null,
+        nationality: null
       }
     }
   },
@@ -195,16 +203,11 @@ export default {
     const iduser = localStorage.getItem('idusers')
     this.actionGetDetailFlight(idflight)
     this.actionGetUser(iduser)
-    // this.form.username = this.getUser
-    this.form.email = this.getUser[0].email
-    this.form.username = this.getUser[0].username
-    this.form.phone = this.getUser[0].phone
-    // this.ac
   },
-  created () {
+  beforeUpdate () {
     this.form.email = this.getUser[0].email
-    this.form.username = this.getUser[0].username
-    this.form.phone = parseInt(this.getUser[0].phone)
+    this.form.fullname = this.getUser[0].username
+    this.form.phone = this.getUser[0].phone
   }
 }
 </script>
