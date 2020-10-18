@@ -5,6 +5,7 @@ import cities from './cities/index'
 import flight from './flight/index'
 import users from './users/index'
 import countries from './countries/index'
+import booking from './booking/index'
 
 Vue.use(Vuex)
 
@@ -14,7 +15,8 @@ export default new Vuex.Store({
     cities,
     flight,
     users,
-    countries
+    countries,
+    booking
   }
 
   // state: {

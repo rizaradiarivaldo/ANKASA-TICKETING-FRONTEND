@@ -9,6 +9,7 @@ import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
 
 Vue.use(VueSweetalert2)
+
 axios.defaults.headers = { token: localStorage.getItem('token') }
 
 Vue.use(BootstrapVue)

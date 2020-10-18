@@ -187,9 +187,11 @@ export default {
     ...mapActions({
       actionGetDetailFlight: 'flight/getDetailFlight',
       actionGetUser: 'users/getUser',
-      actionGetCountries: 'countries/getCountries'
+      actionGetCountries: 'countries/getCountries',
+      InsertBooking: 'booking/insert'
     }),
     bookingTicket () {
+      this.$swal('Booking', 'Pay for your ticket via the nearest ATM or minimarket', 'success')
       const form = {
         idusers: parseInt(this.getUser[0].idusers),
         idflight: parseInt(this.getDetailFlight.idflight),
@@ -201,9 +203,9 @@ export default {
         terminal: 'GA-123',
         gate: '123',
         total: parseInt(this.getDetailFlight.price)
-        // total:
       }
       console.log(form)
+      this.InsertBooking(form)
     }
   },
   computed: {

@@ -35,9 +35,9 @@ const actions = {
   },
   insert (context, payload) {
     return new Promise((resolve, reject) => {
-      axios.get(URL + '/booking/insert')
+      axios.post(URL + '/booking/insert/', payload)
         .then((response) => {
-          context.commit('SET_ALL_DATA_BOOKING', response.data.data)
+          resolve()
         }).catch((err) => {
           console.log(err)
         })
