@@ -15,6 +15,7 @@
     "mdbvue": "^6.7.1",
     "vue": "^2.6.12",
     "vue-router": "^3.2.0",
+    "vue-sweetalert2": "^4.0.0",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
