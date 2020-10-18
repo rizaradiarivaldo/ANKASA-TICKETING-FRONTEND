@@ -28,15 +28,15 @@
                 </div>
                 <div class="row">
                     <div class="col-3">
-                        <div class="user-box">
-                            <select required>
-                            <option selected></option>
-                            <option>+ 62</option>
-                            <option>+ 62</option>
-                            <option>+ 62</option>
-                            </select>
-                            <label>Phone Number</label>
-                        </div>
+                      <div class="user-box">
+                          <select required>
+                          <option selected></option>
+                          <option>+ 62</option>
+                          <option>+ 62</option>
+                          <option>+ 62</option>
+                          </select>
+                          <label>Phone Number</label>
+                      </div>
                     </div>
                     <div class="col-9">
                     <div class="user-box">
