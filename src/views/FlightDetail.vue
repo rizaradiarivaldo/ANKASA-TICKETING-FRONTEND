@@ -55,7 +55,7 @@
                 </div>
                 <div class="card alert-form">
                     <div class="card-body">
-                        <p class="mb-0 ml-3"><img class="mr-3" src="../assets/img/Vectorwarning.png">Make sure the customer data is correct. {{getUser[0]}}</p>
+                        <p class="mb-0 ml-3"><img class="mr-3" src="../assets/img/Vectorwarning.png">Make sure the customer data is correct.</p>
                     </div>
                 </div>
                 </form>
@@ -82,23 +82,19 @@
                     </div>
                 </div>
                 <div class="user-box">
-                    <select required>
-                    <option selected></option>
-                    <option>Mr.</option>
+                    <select required v-model="form.title">
+                    <option selected>Mr.</option>
                     <option>Mrs.</option>
                     </select>
                     <label>Title</label>
                 </div>
                 <div class="user-box">
-                    <input type="text" v-model="form.fullname" name="" required="" />
+                    <input type="text" v-model="form.fullname" required="" />
                     <label>Full Name</label>
                 </div>
                 <div class="user-box">
-                    <select required>
-                    <option selected></option>
-                    <option>Indonesia</option>
-                    <option>Indonesia</option>
-                    <option>Indonesia</option>
+                    <select required v-model="form.nationality">
+                    <option v-for="(item, index) in getCountries" :key="index" :value="item.namecountries">{{item.namecountries}}</option>
                     </select>
                     <label>Nationallity</label>
                 </div>
@@ -106,7 +102,7 @@
                 </div>
               </div>
             </div>
-            <p class="text-headd" >Passenger Details</p>
+            <p class="text-headd" >Passenger Details {{getDetailFlight.price}}</p>
             <div class="card mb-4">
               <div class="card-body">
                 <div class="d-flex">
@@ -121,7 +117,7 @@
               </div>
             </div>
             <div class="d-flex justify-content-center">
-                <b-button class="b-Savee mb-4" type="submit">Proceed to Payment</b-button>
+                <b-button class="b-Savee mb-4" @click="bookingTicket()">Proceed to Payment</b-button>
             </div>
           </div>
           <div class="col-sm-4 pl-4">
@@ -177,8 +173,9 @@ export default {
         email: null,
         countryCode: '+62',
         phone: null,
-        title: null,
-        nationality: null
+        title: 'Mr.',
+        nationality: 'Indonesia',
+        price: 0
       }
     }
   },
@@ -189,13 +186,31 @@ export default {
   methods: {
     ...mapActions({
       actionGetDetailFlight: 'flight/getDetailFlight',
-      actionGetUser: 'users/getUser'
-    })
+      actionGetUser: 'users/getUser',
+      actionGetCountries: 'countries/getCountries'
+    }),
+    bookingTicket () {
+      const form = {
+        idusers: parseInt(this.getUser[0].idusers),
+        idflight: parseInt(this.getDetailFlight.idflight),
+        title: this.form.title,
+        fullname: this.form.fullname,
+        nationality: this.form.nationality,
+        insurance: 0,
+        payment_status: 0,
+        terminal: 'GA-123',
+        gate: '123',
+        total: parseInt(this.getDetailFlight.price)
+        // total:
+      }
+      console.log(form)
+    }
   },
   computed: {
     ...mapGetters({
       getDetailFlight: 'flight/getDetailFlight',
-      getUser: 'users/getUser'
+      getUser: 'users/getUser',
+      getCountries: 'countries/getCountries'
     })
   },
   mounted () {
@@ -203,11 +218,13 @@ export default {
     const iduser = localStorage.getItem('idusers')
     this.actionGetDetailFlight(idflight)
     this.actionGetUser(iduser)
+    this.actionGetCountries()
   },
   beforeUpdate () {
     this.form.email = this.getUser[0].email
     this.form.fullname = this.getUser[0].username
     this.form.phone = this.getUser[0].phone
+    this.form.price = this.getDetailFlight.price
   }
 }
 </script>

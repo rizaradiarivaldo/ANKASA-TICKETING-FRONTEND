@@ -3,28 +3,28 @@ const { URL } = require('../../helper/index')
 
 const state = () => {
   return {
-    dataUser: []
+    dataCountry: []
   }
 }
 
 const getters = {
-  getUser (state) {
-    return state.dataUser
+  getCountries (state) {
+    return state.dataCountry
   }
 }
 
 const mutations = {
-  SET_DATA_USER (state, payload) {
-    state.dataUser = payload
+  SET_ALL_DATA_COUNTRY (state, payload) {
+    state.dataCountry = payload
   }
 }
 
 const actions = {
-  getUser (context, payload) {
+  getCountries (context, payload) {
     return new Promise((resolve, reject) => {
-      axios.get(URL + `/users/getDetail/${localStorage.getItem('idusers')}}`)
+      axios.get(URL + '/countries/getAll')
         .then((response) => {
-          context.commit('SET_DATA_USER', response.data.data)
+          context.commit('SET_ALL_DATA_COUNTRY', response.data.data)
         }).catch((err) => {
           console.log(err)
         })

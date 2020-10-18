@@ -11,7 +11,6 @@ const state = () => {
 
 const getters = {
   getCities (state) {
-    // console.log(state.all)
     return state.all
   }
 }
