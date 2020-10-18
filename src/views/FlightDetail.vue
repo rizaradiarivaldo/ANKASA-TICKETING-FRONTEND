@@ -119,15 +119,19 @@
           <div class="col-sm-4 pl-4">
             <div class="card mb-4">
               <div class="card-body">
-                <p class="color-third mb-4" ><img class="mr-4" src="../assets/img/garuda-indonesia-logo-BD82882F07-seeklogo 1.png">Garuda Indonesia</p>
-                <h5 class="font-weight-bold mb-4" >Medan (IDN) <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> Tokyo (JPN)</h5>
-                <p class="color-third font-size-12 mb-4">Sunday, 15 August 2020 . 12:33 - 15:21</p>
+                <p class="color-third mb-4" ><img class="mr-4" :src="`${URL}/${getDetailFlight.imageairlines}`" width="60px">{{getDetailFlight.nameairlines}}</p>
+                <h5 class="font-weight-bold mb-4" >
+                  {{getDetailFlight.fromnamecity}} ({{getDetailFlight.fromalias}})
+                  <img class="ml-3 mr-3" src="../assets/img/Vector (3).png">
+                  {{getDetailFlight.tonamecity}} ({{getDetailFlight.toalias}})
+                </h5>
+                <p class="color-third font-size-12 mb-4">{{getDetailFlight.date_departure}} . {{getDetailFlight.departure.slice(0,5)}} - {{getDetailFlight.arrived.slice(0,5)}}</p>
                 <p class="color-default font-size-14"><img src="../assets/img/Group 1059.png"> Refundable</p>
                 <p class="color-default font-size-14"><img src="../assets/img/Group 1059.png"> Can reschedule</p>
                 <hr>
                 <div class="d-flex">
                     <h5>Total Payment</h5>
-                    <h4 class="color-default ml-auto">$ 145,00 <img class="ml-2" src="../assets/img/btnback.png"></h4>
+                    <h4 class="color-default ml-auto">$ {{getDetailFlight.price}},00 <img class="ml-2" src="../assets/img/btnback.png"></h4>
                 </div>
               </div>
             </div>
@@ -144,7 +148,7 @@
          </div>
          <div class="w-100 text-center">
              <img class="coba" width="100%" src="../assets/img/ticketBackground.svg">
-            <p class="cobaaja">aasasas</p>
+            <p class="cobaaja">test</p>
          </div>
       </div>
       <Footer/>
@@ -154,10 +158,31 @@
 <script>
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
+import { mapActions, mapGetters } from 'vuex'
+const { URL } = require('../helper/index')
 export default {
+  data () {
+    return {
+      URL
+    }
+  },
   components: {
     Navbar,
     Footer
+  },
+  methods: {
+    ...mapActions({
+      actionGetDetailFlight: 'flight/getDetailFlight'
+    })
+  },
+  computed: {
+    ...mapGetters({
+      getDetailFlight: 'flight/getDetailFlight'
+    })
+  },
+  created () {
+    const id = localStorage.getItem('idflight')
+    this.actionGetDetailFlight(id)
   }
 }
 </script>

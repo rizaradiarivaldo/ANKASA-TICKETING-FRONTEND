@@ -237,7 +237,7 @@
                     </div>
                     <p class="color-second mt-3 mr-5"><span class="color-default" >$ {{item.price}},00/pax</span></p>
                     <router-link  to="/flightdetail">
-                    <b-button class="b-Save ml-auto mr-2" type="submit" @click="cek(item.idflight)">Select</b-button>
+                    <b-button class="b-Save ml-auto mr-2" type="submit" @click="sendId(item.idflight)">Select</b-button>
                     </router-link>
                     </div>
                     <p class="font-weight-bold color-default" >View Details  <img class="ml-2" src="../assets/img/btnback.png"></p>
@@ -278,8 +278,9 @@ export default {
     ...mapActions({
       getAllFlight: 'flight/getFlight'
     }),
-    cek (item) {
-      alert(item)
+    sendId (id) {
+      localStorage.setItem('idflight', id)
+      // window.location = '/flightdetail'
     }
   },
   computed: {
