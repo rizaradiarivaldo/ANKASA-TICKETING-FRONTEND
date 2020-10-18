@@ -19,34 +19,36 @@
                 <div class="form-box">
                 <form>
                 <div class="user-box">
-                    <input type="text" name="" required="" />
+                    <input type="text" v-model="form.username" name="" required="" />
                     <label>Full Name</label>
                 </div>
                 <div class="user-box">
-                    <input type="text" name="" required="" />
+                    <input type="text" v-model="form.email" name="" required="" />
                     <label>Email</label>
                 </div>
                 <div class="row">
                     <div class="col-3">
                       <div class="user-box">
-                          <select required>
-                          <option selected></option>
-                          <option>+ 62</option>
-                          <option>+ 62</option>
-                          <option>+ 62</option>
+                          <select required v-model="form.countryCode">
+                          <option selected>+ 62</option>
+                          <option>+ 63</option>
+                          <option>+ 64</option>
+                          <option>+ 65</option>
+                          <option>+ 66</option>
                           </select>
-                          <label>Phone Number</label>
+                          <label>Country Code</label>
                       </div>
                     </div>
                     <div class="col-9">
                     <div class="user-box">
-                        <input type="text" name="" required="" />
+                        <input type="text" v-model="form.phone" name="" required="" />
+                        <label>Phone Number</label>
                     </div>
                     </div>
                 </div>
                 <div class="card alert-form">
                     <div class="card-body">
-                        <p class="mb-0 ml-3"><img class="mr-3" src="../assets/img/Vectorwarning.png">Make sure the customer data is correct.</p>
+                        <p class="mb-0 ml-3"><img class="mr-3" src="../assets/img/Vectorwarning.png">Make sure the customer data is correct. {{getUser[0]}}</p>
                     </div>
                 </div>
                 </form>
@@ -163,7 +165,13 @@ const { URL } = require('../helper/index')
 export default {
   data () {
     return {
-      URL
+      URL,
+      form: {
+        username: null,
+        email: null,
+        countryCode: null,
+        phone: null
+      }
     }
   },
   components: {
@@ -172,17 +180,31 @@ export default {
   },
   methods: {
     ...mapActions({
-      actionGetDetailFlight: 'flight/getDetailFlight'
+      actionGetDetailFlight: 'flight/getDetailFlight',
+      actionGetUser: 'users/getUser'
     })
   },
   computed: {
     ...mapGetters({
-      getDetailFlight: 'flight/getDetailFlight'
+      getDetailFlight: 'flight/getDetailFlight',
+      getUser: 'users/getUser'
     })
   },
+  mounted () {
+    const idflight = localStorage.getItem('idflight')
+    const iduser = localStorage.getItem('idusers')
+    this.actionGetDetailFlight(idflight)
+    this.actionGetUser(iduser)
+    // this.form.username = this.getUser
+    this.form.email = this.getUser[0].email
+    this.form.username = this.getUser[0].username
+    this.form.phone = this.getUser[0].phone
+    // this.ac
+  },
   created () {
-    const id = localStorage.getItem('idflight')
-    this.actionGetDetailFlight(id)
+    this.form.email = this.getUser[0].email
+    this.form.username = this.getUser[0].username
+    this.form.phone = parseInt(this.getUser[0].phone)
   }
 }
 </script>
