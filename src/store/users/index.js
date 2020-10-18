@@ -25,6 +25,7 @@ const actions = {
       axios.get(URL + `/users/getDetail/${localStorage.getItem('idusers')}}`)
         .then((response) => {
           context.commit('SET_DATA_USER', response.data.data)
+          resolve(response.data.data)
         }).catch((err) => {
           console.log(err)
         })

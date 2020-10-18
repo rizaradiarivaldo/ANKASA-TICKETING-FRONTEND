@@ -22,7 +22,7 @@
                         <label>Email</label>
                       </div>
                       <div class="user-box">
-                        <input type="text" name="" required="">
+                        <input type="text" name="" v-model="form.phone" required="">
                         <label>Phone Number</label>
                       </div>
                     </form>
@@ -37,24 +37,22 @@
                     <div class="login-box">
                     <form>
                       <div class="user-box">
-                        <input type="text" name="" required="">
+                        <input type="text" name="" v-model="form.username" required="">
                         <label>Username</label>
                       </div>
                       <div class="user-box">
-                        <select required>
-                          <option selected></option>
-                          <option>Medan</option>
-                          <option>Jogjs</option>
-                          <option>Jakarta</option>
+                        <select v-model="form.city" required>
+                          <option :value="null" selected></option>
+                          <option value="Medan">Medan</option>
                         </select>
                         <label>City</label>
                       </div>
                       <div class="user-box">
-                        <input type="text" name="" required="">
+                        <input type="text" name="" v-model="form.address" required="">
                         <label>Address</label>
                       </div>
                       <div class="user-box">
-                        <input type="text" name="" required="">
+                        <input type="text" name="" v-model="form.postcode" required="">
                         <label>Post Code</label>
                       </div>
                       <b-button class="mt-3 b-Save" type="submit">Save</b-button>
@@ -117,7 +115,14 @@ export default {
     })
   },
   mounted () {
-    this.actionGetUser()
+    this.actionGetUser().then((result) => {
+      this.form.email = result[0].email
+      this.form.phone = result[0].phone
+      this.form.username = result[0].username
+      this.form.city = result[0].city
+      this.form.address = result[0].address
+      this.form.postcode = result[0].postcode
+    })
   }
 }
 </script>
