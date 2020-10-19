@@ -4,16 +4,19 @@
     <div class="card d-sm-block d-none">
         <div class="card-body">
         <div class="text-center">
-            <img class="img-thumbnail" alt="Responsive image" src="../assets/img/nnzkZNYWHaU.png">
+            <img width="150" class="img-thumbnail" alt="Responsive image" :src="`${URL}/${image}`">
         </div>
         <div class="text-center mt-3" >
-            <button type="button" class="btn btn-outline-primary btn-lg font-weight-bold">Select Photo</button>
+            <div class="fileUpload btn btn-outline-primary btn-lg font-weight-bold">
+                <span>Select Photo</span>
+                <input @change="prosesFile($event)" class="upload" type="file" />
+            </div>
         </div>
         <div class="text-center mt-3" >
-            <h4 class="font-weight-bold" >Mike Kowalski</h4>
+            <h4 class="font-weight-bold" >{{ form.username }}</h4>
         </div>
         <div class="text-center mt-2" >
-            <p style="color: #6B6B6B;" >Medan, Indonesia</p>
+            <p style="color: #6B6B6B;" >{{ form.address === ''? 'Address Belum di Tambahkan' : form.address }}</p>
         </div>
         <div class="row">
             <div class="col-6"><p class="" >Cards</p></div>
@@ -80,17 +83,53 @@
 
 <script>
 import { mapActions } from 'vuex'
+require('dotenv').config()
 export default {
+  props: ['form'],
+  data () {
+    return {
+      image: null,
+      user: null,
+      URL: process.env.VUE_APP_API_URL
+    }
+  },
   methods: {
     ...mapActions({
-      actionLogout: 'auth/logout'
+      actionLogout: 'auth/logout',
+      actionGetUser: 'users/getUser',
+      actionUpdate: 'users/updateProfile'
     }),
     logOut () {
       this.actionLogout().then((resolve) => {
         alert(resolve)
         window.location = '/'
       })
+    },
+    prosesFile (event) {
+      const fd = new FormData()
+      fd.append('image', event.target.files[0])
+      const payload = {
+        id: localStorage.getItem('idusers'),
+        data: fd
+      }
+      this.actionUpdate(payload)
+        .then((response) => {
+          if (response === 'image type must jpg, jpeg, or png') {
+            alert(response)
+          } else if (response === 'File too large, max size 100kb') {
+            alert(response)
+          } else {
+            alert(response)
+            window.location = '/profile'
+          }
+        })
     }
+  },
+  mounted () {
+    this.actionGetUser()
+      .then((result) => {
+        this.image = result[0].image
+      })
   }
 }
 </script>
@@ -114,5 +153,21 @@ export default {
 }
 .cards {
     height: 68px;
+}
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
 }
 </style>

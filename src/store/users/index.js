@@ -30,6 +30,17 @@ const actions = {
           console.log(err)
         })
     })
+  },
+  updateProfile (context, payload) {
+    console.log(payload)
+    return new Promise((resolve, reject) => {
+      axios.patch(`${URL}/users/update/${payload.id}`, payload.data)
+        .then((response) => {
+          resolve(response.data.message)
+        }).catch((err) => {
+          reject(err)
+        })
+    })
   }
 }
 

@@ -5,7 +5,7 @@
           <!-- desktop -->
           <div class="row d-sm-flex d-none">
           <div class="col-sm-3">
-            <CardProfile/>
+            <CardProfile :form='data'/>
           </div>
           <div class="col-sm-9">
             <div class="card mb-4">
@@ -16,7 +16,7 @@
                   <div class="col-6">
                     <p class="font-weight-bold" >Contact</p>
                     <div class="login-box">
-                    <form>
+                    <form @submit.prevent="updateProfile">
                       <div class="user-box">
                         <input type="text" v-model="form.email" name="" required="">
                         <label>Email</label>
@@ -35,20 +35,20 @@
                   <div class="col-6" :class="{ select: selected }">
                     <p class="font-weight-bold" >Biodata</p>
                     <div class="login-box">
-                    <form>
+                    <form @submit.prevent="updateProfile">
                       <div class="user-box">
                         <input type="text" name="" v-model="form.username" required="">
                         <label>Username</label>
                       </div>
                       <div class="user-box">
-                        <select v-model="form.city" required>
+                        <select v-model="form.city">
                           <option :value="null" selected></option>
                           <option value="Medan">Medan</option>
                         </select>
                         <label>City</label>
                       </div>
                       <div class="user-box">
-                        <input type="text" name="" v-model="form.address" required="">
+                        <input type="text" name="" v-model="form.address">
                         <label>Address</label>
                       </div>
                       <div class="user-box">
@@ -66,7 +66,7 @@
         </div>
         <!-- HP -->
         <div class="row no-gutters justify-content-center bg-white d-sm-none d-flex">
-          <CardProfile/>
+          <!-- <CardProfile/> -->
         </div>
       </div>
       <Footer/>
@@ -92,9 +92,10 @@ export default {
         phone: null,
         username: null,
         city: null,
-        address: null,
+        address: '',
         postcode: null
-      }
+      },
+      data: null
     }
   },
   methods: {
@@ -106,8 +107,45 @@ export default {
       }
     },
     ...mapActions({
-      actionGetUser: 'users/getUser'
-    })
+      actionGetUser: 'users/getUser',
+      actionUpdate: 'users/updateProfile'
+    }),
+    updateProfile () {
+      // console.log(id)
+      // alert('update')
+      const fd = new FormData()
+      fd.append('email', this.form.email)
+      fd.append('phone', this.form.phone)
+      fd.append('username', this.form.username)
+      fd.append('city', this.form.city)
+      fd.append('address', this.form.address)
+      fd.append('postcode', this.form.postcode)
+      // const data = {
+      //   email: this.form.email,
+      //   phone: this.form.phone,
+      //   username: this.form.username,
+      //   city: this.form.city,
+      //   address: this.form.address,
+      //   postcode: this.form.postcode
+      // }
+      // console.log(fd)
+      // console.log(data)
+      const payload = {
+        id: localStorage.getItem('idusers'),
+        data: fd
+      }
+      this.actionUpdate(payload)
+        .then((response) => {
+          if (response === 'image type must jpg, jpeg, or png') {
+            alert(response)
+          } else if (response === 'File too large, max size 100kb') {
+            alert(response)
+          } else {
+            alert(response)
+            window.location = '/profile'
+          }
+        })
+    }
   },
   computed: {
     ...mapGetters({
@@ -120,8 +158,9 @@ export default {
       this.form.phone = result[0].phone
       this.form.username = result[0].username
       this.form.city = result[0].city
-      this.form.address = result[0].address
+      this.form.address = result[0].address === null ? '' : result[0].address
       this.form.postcode = result[0].postcode
+      this.data = result[0]
     })
   }
 }

@@ -5,7 +5,7 @@
           <!-- desktop -->
           <div class="row d-sm-flex d-none">
           <div class="col-sm-3">
-            <CardProfile/>
+            <CardProfile :form='data'/>
           </div>
           <div class="col-sm-9">
             <div class="card mb-4">
@@ -100,11 +100,28 @@
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import CardProfile from '@/components/CardProfile.vue'
+import { mapActions } from 'vuex'
 export default {
+  data () {
+    return {
+      data: null
+    }
+  },
   components: {
     Navbar,
     Footer,
     CardProfile
+  },
+  methods: {
+    ...mapActions({
+      actionGetUser: 'users/getUser',
+      actionUpdate: 'users/updateProfile'
+    })
+  },
+  mounted () {
+    this.actionGetUser().then((result) => {
+      this.data = result[0]
+    })
   }
 }
 </script>
