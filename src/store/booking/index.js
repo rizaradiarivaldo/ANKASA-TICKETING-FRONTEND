@@ -44,7 +44,7 @@ const actions = {
         .then((response) => {
           console.log(response.data.data)
           // context.commit('SET_ALL_DETAIL_BOOKING', response.data.data)
-          resolve(response.data.data)
+          // resolve(response.data.data)
         }).catch((err) => {
           console.log(err)
         })
