@@ -56,7 +56,7 @@
           <div class="col-sm-12">
             <div class="card mb-4">
               <div class="card-body">
-                <h6 class="card-title cards-title">MY BOOKING</h6>
+                <h6 class="card-title cards-title">MY BOOKING {{getBookingUser}}</h6>
                 <div class="row">
                   <div class="col-6"><h3 class="card-text cards-text-hp font-weight-bold">My Booking</h3></div>
                   <div class="col-6 font-weight-bold text-right color-default"><p>Order History</p></div>
@@ -100,7 +100,7 @@
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import CardProfile from '@/components/CardProfile.vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -115,13 +115,23 @@ export default {
   methods: {
     ...mapActions({
       actionGetUser: 'users/getUser',
-      actionUpdate: 'users/updateProfile'
+      actionUpdate: 'users/updateProfile',
+      actionGetBookingUser: 'booking/getDetailBooking'
+    })
+  },
+  computed: {
+    ...mapGetters({
+      getBookingUser: 'booking/getDetailBooking'
     })
   },
   mounted () {
     this.actionGetUser().then((result) => {
       this.data = result[0]
     })
+    const form = {
+      idusers: localStorage.getItem('idusers')
+    }
+    this.actionGetBookingUser(form)
   }
 }
 </script>
