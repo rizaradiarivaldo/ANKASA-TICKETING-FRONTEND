@@ -204,8 +204,8 @@ export default {
         gate: '123',
         total: parseInt(this.getDetailFlight.price)
       }
-      console.log(form)
       this.InsertBooking(form)
+      window.location = '/'
     }
   },
   computed: {
