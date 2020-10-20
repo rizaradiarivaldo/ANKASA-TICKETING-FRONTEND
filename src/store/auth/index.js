@@ -23,7 +23,7 @@ const actions = {
         .then((result) => {
           localStorage.setItem('token', result.data.data.token)
           localStorage.setItem('idusers', result.data.data.idusers)
-          resolve(result.data.message)
+          resolve(result.data.data)
         })
         .catch((err) => {
           alert(err)

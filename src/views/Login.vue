@@ -12,7 +12,7 @@
         <b-col>
           <div class="login-box">
             <h4>Login</h4>
-            <form class="formRegis" @submit.prevent="LogOn">
+            <form class="formRegis" @submit.prevent="LogOn()">
               <div class="user-box">
                 <input type="text" v-model="form.username" required />
                 <label>Username</label>
@@ -61,7 +61,11 @@ export default {
     LogOn () {
       this.onSignIn(this.form)
         .then((result) => {
-          window.location = '/'
+          if (result.length < 1) {
+            alert('email or password is wrong')
+          } else {
+            window.location = '/'
+          }
         })
         .catch((err) => {
           alert(err)
