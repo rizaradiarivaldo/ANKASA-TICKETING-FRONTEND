@@ -163,11 +163,10 @@
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import { mapActions, mapGetters } from 'vuex'
-const { URL } = require('../helper/index')
 export default {
   data () {
     return {
-      URL,
+      URL: process.env.VUE_APP_API_URL,
       form: {
         fullname: null,
         email: null,

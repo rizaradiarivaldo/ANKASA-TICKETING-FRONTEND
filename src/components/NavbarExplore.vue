@@ -161,7 +161,7 @@
               <img
                 class="img-thumbnail"
                 alt="Responsive image"
-                src="../assets/img/nnzkZNYWHaU.png"
+                :src="`${URL}/${image}`"
               />
               </router-link>
             </div>
@@ -244,7 +244,7 @@
                   class="img-thumbnail"
                   width="50px"
                   alt="Responsive image"
-                  src="../assets/img/nnzkZNYWHaU.png"
+                  :src="`${URL}/${image}`"
                 />
               </div>
             </div>
@@ -274,7 +274,9 @@ export default {
       date_departure: null,
       child: null,
       adult: null,
-      classFlight: null
+      classFlight: null,
+      URL: process.env.VUE_APP_API_URL,
+      image: null
     }
   },
   methods: {
@@ -313,7 +315,8 @@ export default {
     ...mapActions(
       {
         getFlight: 'flight/getFlight',
-        getCities: 'cities/getCities'
+        getCities: 'cities/getCities',
+        actionGetUser: 'users/getUser'
       }
     ),
     typeflight (id) {
@@ -327,6 +330,10 @@ export default {
   },
   mounted () {
     this.getCities()
+    this.actionGetUser()
+      .then((result) => {
+        this.image = result[0].image
+      })
   }
 }
 </script>

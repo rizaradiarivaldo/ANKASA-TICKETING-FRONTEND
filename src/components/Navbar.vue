@@ -23,7 +23,7 @@
                     <div class="col-7">
                         <div class="row pt-2">
                             <div class="col-4">
-                                <router-link to="/findticket" active-class="selecting" class="router-link" >
+                                <router-link to="/" class="router-link" >
                                     <p class="nav-menu">Find Ticket</p>
                                 </router-link>
                             </div>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-4">
                         <router-link to="/profile" class="router-link">
-                            <img class="img-thumbnail" alt="Responsive image" src="../assets/img/nnzkZNYWHaU.png">
+                            <img class="img-thumbnail" alt="Responsive image" :src="`${URL}/${image}`">
                         </router-link>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                  </form>
                 </div>
                 <div class="col-12 mt-3 mb-3 ml-2">
-                    <router-link to="/findticket" active-class="selecting-hp" class="router-link" >
+                    <router-link to="/" active-class="selecting-hp" class="router-link" >
                         <p class="nav-menu">Find Ticket</p>
                     </router-link>
                 </div>
@@ -112,7 +112,7 @@
                         <img src="../assets/img/bell.png">
                     </div>
                     <div class="col-4">
-                            <img class="img-thumbnail" width="50px" alt="Responsive image" src="../assets/img/nnzkZNYWHaU.png">
+                            <img class="img-thumbnail" width="50px" alt="Responsive image" :src="`${URL}/${image}`">
                     </div>
                   </div>
                 </div>
@@ -123,7 +123,25 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
+  data () {
+    return {
+      URL: process.env.VUE_APP_API_URL,
+      image: null
+    }
+  },
+  methods: {
+    ...mapActions({
+      actionGetUser: 'users/getUser'
+    })
+  },
+  mounted () {
+    this.actionGetUser()
+      .then((result) => {
+        this.image = result[0].image
+      })
+  }
 }
 </script>
 
