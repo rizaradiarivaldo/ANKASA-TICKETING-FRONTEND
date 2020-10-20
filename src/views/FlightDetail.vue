@@ -190,7 +190,6 @@ export default {
       InsertBooking: 'booking/insert'
     }),
     bookingTicket () {
-      this.$swal('Booking', 'Pay for your ticket via the nearest ATM or minimarket', 'success')
       const form = {
         idusers: parseInt(this.getUser[0].idusers),
         idflight: parseInt(this.getDetailFlight.idflight),
@@ -204,7 +203,10 @@ export default {
         total: parseInt(this.getDetailFlight.price)
       }
       this.InsertBooking(form)
-      window.location = '/mybooking'
+      this.$swal('Booking', 'Pay for your ticket via the nearest ATM or minimarket', 'success')
+      setTimeout(() => {
+        window.location = '/mybooking'
+      }, 1000)
     }
   },
   computed: {
