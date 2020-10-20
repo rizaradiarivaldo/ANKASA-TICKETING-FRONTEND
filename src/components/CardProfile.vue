@@ -43,19 +43,23 @@
     <div class="w-100 h-100 d-sm-none d-block">
         <div class="position-relative">
             <div class="text-center">
-            <img class="img-thumbnail" alt="Responsive image" src="../assets/img/nnzkZNYWHaU.png">
+            <img class="img-thumbnail" alt="Responsive image" :src="`${URL}/${image}`">
         </div>
-        <div class="cont-edit-photo">
+        <!-- <div class="cont-edit-photo">
            <div class="edit-photo" >
             <img class="img-fluid" src="../assets/img/Vector.svg">
         </div>
+        </div> -->
         </div>
-        </div>
+        <div style="margin-left:30%;" class="fileUpload btn btn-outline-primary btn-lg font-weight-bold">
+                <span>Select Photo</span>
+                <input @change="prosesFile($event)" class="upload" type="file" />
+          </div>
         <div class="text-center mt-3" >
-            <h4 class="font-weight-bold" >Mike Kowalski</h4>
+            <h4 class="font-weight-bold" >{{ form.username }}</h4>
         </div>
         <div class="text-center mt-2" >
-            <p style="color: #6B6B6B;" >Medan, Indonesia</p>
+            <p style="color: #6B6B6B;" >{{ form.address === ''? 'Address Belum di Tambahkan' : form.address }}</p>
         </div>
         <div class="row">
             <div class="col-6"><p class="" >Cards</p></div>
@@ -69,12 +73,12 @@
             </div>
         </div>
         <div class="font-weight-bold">
-            <router-link to="/editprofile" class="router-link">
+            <router-link to="/profile" class="router-link">
             <p class="body-text-profile ml-2 mb-4"><img class="mr-4" src="../assets/img/user.png">Profile</p>
             </router-link>
             <p class="ml-2 mb-4"><img class="mr-4" src="../assets/img/Vector (4).png">My Review</p>
             <p class="ml-2 mb-4"><img class="mr-4" src="../assets/img/Vector (5).png">Settings</p>
-            <p class="body-text-logout ml-2 mb-4" @click="logOut()"><img class="mr-4" src="../assets/img/Vector (6).png">Logout</p>
+            <a class="body-text-logout ml-2 mb-4" @click="logOut()"><img class="mr-4" src="../assets/img/Vector (6).png">Logout</a>
         </div>
     </div>
     </div>

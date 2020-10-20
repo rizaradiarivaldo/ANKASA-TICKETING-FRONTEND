@@ -66,7 +66,67 @@
         </div>
         <!-- HP -->
         <div class="row no-gutters justify-content-center bg-white d-sm-none d-flex">
-          <!-- <CardProfile/> -->
+          <CardProfile :form='data'/>
+          <div class="mt-4 bg-white d-sm-none d-block pr-5 pl-5">
+            <h6 class="card-title cards-title">PROFILE</h6>
+            <h3 class="card-text mb-5 font-weight-bold">Profile</h3>
+            <p class="font-weight-bold mb-2">Contact</p>
+            <div class="login-box">
+              <form @submit.prevent="updateProfile">
+                <div class="user-box">
+                  <input type="text" v-model="form.email" name="" required="" />
+                  <label>Email</label>
+                </div>
+                <div class="user-box">
+                  <input type="text" name="" v-model="form.phone" required="" />
+                  <label>Phone Number</label>
+                </div>
+              </form>
+              <p class="mb-0 text-right color-default font-weight-bold">
+                Account Settings
+                <img
+                  v-if="(select = selected)"
+                  class="ml-4"
+                  @click="arrow()"
+                  src="../assets/img/btnback.png"
+                />
+                <img
+                  v-else
+                  class="ml-4"
+                  @click="arrow()"
+                  src="../assets/img/btnback (1).png"
+                />
+              </p>
+            </div>
+            <div :class="{ select: selected }">
+              <p class="font-weight-bold mb-2">Biodata</p>
+              <div class="login-box">
+                <form @submit.prevent="updateProfile">
+                  <div class="user-box">
+                    <input type="text" name="" v-model="form.username" required="" />
+                    <label>Username</label>
+                  </div>
+                  <div class="user-box">
+                    <select v-model="form.city">
+                      <option :value="null" selected></option>
+                      <option value="Medan">Medan</option>
+                    </select>
+                    <label>City</label>
+                  </div>
+                  <div class="user-box">
+                    <input type="text" name="" v-model="form.address" required="" />
+                    <label>Address</label>
+                  </div>
+                  <div class="user-box">
+                    <input type="text" name="" v-model="form.postcode" required="" />
+                    <label>Post Code</label>
+                  </div>
+                  <b-button class="mt-3 b-Save" type="submit">Save</b-button>
+                  <div style="clear: both"></div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Footer/>
