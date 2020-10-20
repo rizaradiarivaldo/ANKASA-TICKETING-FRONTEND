@@ -171,8 +171,6 @@ export default {
       actionUpdate: 'users/updateProfile'
     }),
     updateProfile () {
-      // console.log(id)
-      // alert('update')
       const fd = new FormData()
       fd.append('email', this.form.email)
       fd.append('phone', this.form.phone)
@@ -180,16 +178,6 @@ export default {
       fd.append('city', this.form.city)
       fd.append('address', this.form.address)
       fd.append('postcode', this.form.postcode)
-      // const data = {
-      //   email: this.form.email,
-      //   phone: this.form.phone,
-      //   username: this.form.username,
-      //   city: this.form.city,
-      //   address: this.form.address,
-      //   postcode: this.form.postcode
-      // }
-      // console.log(fd)
-      // console.log(data)
       const payload = {
         id: localStorage.getItem('idusers'),
         data: fd

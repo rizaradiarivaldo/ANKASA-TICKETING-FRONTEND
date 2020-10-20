@@ -68,7 +68,7 @@ export default {
           }
         })
         .catch((err) => {
-          alert(err)
+          this.$swal('Failed', err, 'error')
         })
     },
     ...mapActions({ onSignIn: 'auth/login' })
