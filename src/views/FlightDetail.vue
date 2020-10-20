@@ -220,13 +220,13 @@ export default {
     const iduser = localStorage.getItem('idusers')
     this.actionGetDetailFlight(idflight)
     this.actionGetUser(iduser)
+      .then((result) => {
+        this.form.email = this.getUser[0].email
+        this.form.fullname = this.getUser[0].username
+        this.form.phone = this.getUser[0].phone
+        this.form.price = this.getDetailFlight.price
+      })
     this.actionGetCountries()
-  },
-  beforeUpdate () {
-    this.form.email = this.getUser[0].email
-    this.form.fullname = this.getUser[0].username
-    this.form.phone = this.getUser[0].phone
-    this.form.price = this.getDetailFlight.price
   }
 }
 </script>
