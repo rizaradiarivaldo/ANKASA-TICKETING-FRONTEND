@@ -204,7 +204,7 @@ export default {
         total: parseInt(this.getDetailFlight.price)
       }
       this.InsertBooking(form)
-      window.location = '/'
+      window.location = '/mybooking'
     }
   },
   computed: {
