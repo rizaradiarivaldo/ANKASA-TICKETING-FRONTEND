@@ -197,12 +197,14 @@ export default {
       this.actionUpdate(payload)
         .then((response) => {
           if (response === 'image type must jpg, jpeg, or png') {
-            alert(response)
+            this.$swal('Failed', ' image type must jpg, jpeg, or png', 'error')
           } else if (response === 'File too large, max size 100kb') {
-            alert(response)
+            this.$swal('Failed', ' File too large, max size 100kb', 'error')
           } else {
-            alert(response)
-            window.location = '/profile'
+            this.$swal('Update', 'Successfully update', 'success')
+            setTimeout(() => {
+              window.location = '/profile'
+            }, 1000)
           }
         })
     }

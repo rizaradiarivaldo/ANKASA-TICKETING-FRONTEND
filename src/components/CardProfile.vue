@@ -105,8 +105,10 @@ export default {
     }),
     logOut () {
       this.actionLogout().then((resolve) => {
-        alert(resolve)
-        window.location = '/login'
+        this.$swal('Logout', 'You successfully Logout', 'success')
+        setTimeout(() => {
+          window.location = '/login'
+        }, 2000)
       })
     },
     prosesFile (event) {
@@ -119,12 +121,14 @@ export default {
       this.actionUpdate(payload)
         .then((response) => {
           if (response === 'Image type must jpg, jpeg or png') {
-            alert(response)
+            this.$swal('Failed', 'Image type must jpg, jpeg or png', 'error')
           } else if (response === 'File size max 2Mb') {
-            alert(response)
+            this.$swal('Failed', ' File too large, max size 2Mb', 'error')
           } else {
-            alert(response)
-            window.location = '/profile'
+            this.$swal('Update', 'Successfully update', 'success')
+            setTimeout(() => {
+              window.location = '/profile'
+            }, 1000)
           }
         })
     }

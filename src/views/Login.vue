@@ -62,7 +62,7 @@ export default {
       this.onSignIn(this.form)
         .then((result) => {
           if (result.length < 1) {
-            alert('email or password is wrong')
+            this.$swal('Failed', 'Username or password is wrong', 'error')
           } else {
             window.location = '/'
           }
