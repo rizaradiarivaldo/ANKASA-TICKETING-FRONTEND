@@ -35,7 +35,7 @@
             </router-link>
             <p class="ml-2 mb-4"><img class="mr-4" src="../assets/img/Vector (4).png">My Review</p>
             <p class="ml-2 mb-4"><img class="mr-4" src="../assets/img/Vector (5).png">Settings</p>
-            <a class="body-text-logout ml-2 mb-4" @click="logOut()"><img class="mr-4" src="../assets/img/Vector (6).png">Logout</a>
+            <a class="body-text-logout ml-2 mb-4" @click="logOut()" style="cursor: pointer;"><img class="mr-4" src="../assets/img/Vector (6).png">Logout</a>
         </div>
         </div>
     </div>
