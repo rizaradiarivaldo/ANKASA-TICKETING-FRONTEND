@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '../store/index'
+import store from '../store'
 // import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
@@ -24,20 +24,20 @@ const routes = [
   {
     path: '/mybooking',
     name: 'Mybooking',
-    component: () => import('../views/Mybooking.vue')
-    // meta: { requiresAuth: true }
+    component: () => import('../views/Mybooking.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/booking',
     name: 'Booking',
-    component: () => import('../views/FlightDetail.vue')
-    // meta: { requiresAuth: true }
+    component: () => import('../views/BookingDetail.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/profile',
     name: 'Profile',
-    component: () => import('../views/Profile.vue')
-    // meta: { requiresAuth: true }
+    component: () => import('../views/Profile.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/signup',
@@ -47,35 +47,26 @@ const routes = [
   {
     path: '/findticket',
     name: 'FindTicket',
-    component: () => import('../views/FindTicket.vue')
-    // meta: { requiresAuth: true }
+    component: () => import('../views/FindTicket.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/flightdetail',
     name: 'FlightDetail',
-    component: () => import('../views/FlightDetail.vue')
-    // meta: { requiresAuth: true }
+    component: () => import('../views/FlightDetail.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/editprofile',
     name: 'EditProfile',
-    component: () => import('../views/EditProfile.vue')
-    // meta: { requiresAuth: true }
+    component: () => import('../views/EditProfile.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/bookingdetail',
     name: 'BookingDetail',
-    component: () => import('../views/BookingDetail.vue')
-    // meta: { requiresAuth: true }
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-    // meta: { requiresAuth: true }
+    component: () => import('../views/BookingDetail.vue'),
+    meta: { requiresAuth: true }
   }
 ]
 

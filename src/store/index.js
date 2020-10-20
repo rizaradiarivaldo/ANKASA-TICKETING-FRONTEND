@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Auth from '../store/auth/index'
-import cities from './cities/index'
-import flight from './flight/index'
-import users from './users/index'
-import countries from './countries/index'
-import booking from './booking/index'
+import auth from './auth'
+import cities from './cities'
+import flight from './flight'
+import users from './users'
+import countries from './countries'
+import booking from './booking'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
-    Auth,
+    auth,
     cities,
     flight,
     users,

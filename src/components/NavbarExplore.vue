@@ -151,19 +151,19 @@
           </div>
           <div v-else class="row align-items-center">
             <div class="col-4">
-              <router-link to="/profile" class="router-link">
                 <img src="../assets/img/Vector.png" />
-              </router-link>
             </div>
             <div class="col-4">
               <img src="../assets/img/bell.png" />
             </div>
             <div class="col-4">
+            <router-link to="/profile" class="router-link">
               <img
                 class="img-thumbnail"
                 alt="Responsive image"
                 src="../assets/img/nnzkZNYWHaU.png"
               />
+              </router-link>
             </div>
           </div>
         </div>

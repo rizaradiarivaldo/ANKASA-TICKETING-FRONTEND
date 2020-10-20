@@ -67,7 +67,7 @@ export default {
           alert(err)
         })
     },
-    ...mapActions({ onSignIn: 'Auth/login' })
+    ...mapActions({ onSignIn: 'auth/login' })
   }
 }
 </script>

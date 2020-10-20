@@ -35,7 +35,7 @@
             </router-link>
             <p class="ml-2 mb-4"><img class="mr-4" src="../assets/img/Vector (4).png">My Review</p>
             <p class="ml-2 mb-4"><img class="mr-4" src="../assets/img/Vector (5).png">Settings</p>
-            <p class="body-text-logout ml-2 mb-4" @click="logOut()"><img class="mr-4" src="../assets/img/Vector (6).png">Logout</p>
+            <a class="body-text-logout ml-2 mb-4" @click="logOut()"><img class="mr-4" src="../assets/img/Vector (6).png">Logout</a>
         </div>
         </div>
     </div>
@@ -102,7 +102,7 @@ export default {
     logOut () {
       this.actionLogout().then((resolve) => {
         alert(resolve)
-        window.location = '/'
+        window.location = '/login'
       })
     },
     prosesFile (event) {
@@ -114,9 +114,9 @@ export default {
       }
       this.actionUpdate(payload)
         .then((response) => {
-          if (response === 'image type must jpg, jpeg, or png') {
+          if (response === 'Image type must jpg, jpeg or png') {
             alert(response)
-          } else if (response === 'File too large, max size 100kb') {
+          } else if (response === 'File size max 2Mb') {
             alert(response)
           } else {
             alert(response)
