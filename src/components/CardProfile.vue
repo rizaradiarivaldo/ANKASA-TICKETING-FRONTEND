@@ -43,7 +43,7 @@
     <div class="w-100 h-100 d-sm-none d-block">
         <div class="position-relative">
             <div class="text-center">
-            <img class="img-thumbnail" alt="Responsive image" :src="`${URL}/${image}`">
+            <img class="img-thumbnail" width="200px" alt="Responsive image" :src="`${URL}/${image}`">
         </div>
         <!-- <div class="cont-edit-photo">
            <div class="edit-photo" >
