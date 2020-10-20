@@ -10,38 +10,28 @@
           <div class="col-sm-9">
             <div class="card mb-4">
               <div class="card-body">
-                <h6 class="card-title cards-title">MY BOOKING</h6>
+                <h6 class="card-title cards-title">
+                  MY BOOKING
+                </h6>
                 <div class="row">
                   <div class="col-6"><h3 class="card-text font-weight-bold">My Booking</h3></div>
                   <div class="col-6 font-weight-bold text-right color-default"><p>Order History</p></div>
                 </div>
               </div>
             </div>
-            <div class="card mb-4">
+            <div class="card mb-4" v-for="(item, index) in getBookingUser" :key="index">
               <div class="card-body">
-                <h6 class="card-title">Monday, 20 July ‘20 - 12:33</h6>
-                <h5 class="font-weight-bold" >IDN <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> JPN</h5>
-                <p class="color-second" >Garuda Indonesia, AB-221</p>
+                <h6 class="card-title">{{item.date_departure}} - {{item.departure.slice(0,5)}}</h6>
+                <h5 class="font-weight-bold" >{{item.fromalias}} <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> JPN</h5>
+                <p class="color-second" >{{item.nameairlines}}, {{item.code}}</p>
                 <hr class="mb-4" >
                 <div class="row">
                   <div class="col-6">
-                    <p class="color-second font-weight-bold" >Status <span class="booking-status-pending" >Waiting for payment</span></p>
-                  </div>
-                  <div class="col-6">
-                    <p class="font-weight-bold text-right color-default" >View Details <img class="ml-2" src="../assets/img/btnback.png"></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h6 class="card-title">Monday, 20 July ‘20 - 12:33</h6>
-                <h5 class="font-weight-bold" >IDN <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> JPN</h5>
-                <p class="color-second" >Garuda Indonesia, AB-221</p>
-                <hr class="mb-4" >
-                <div class="row">
-                  <div class="col-6">
-                    <p class="color-second font-weight-bold" >Status <span class="booking-status-success" >Eticket issued</span></p>
+                    <p class="color-second font-weight-bold">
+                      Status
+                      <span class="booking-status-pending" v-if="item.payment_status===0">Waiting for payment</span>
+                      <span class="booking-status-success" v-else>Eticket issued</span>
+                      </p>
                   </div>
                   <div class="col-6">
                     <p class="font-weight-bold text-right color-default" >View Details <img class="ml-2" src="../assets/img/btnback.png"></p>
@@ -56,7 +46,7 @@
           <div class="col-sm-12">
             <div class="card mb-4">
               <div class="card-body">
-                <h6 class="card-title cards-title">MY BOOKING {{getBookingUser}}</h6>
+                <h6 class="card-title cards-title">MY BOOKING</h6>
                 <div class="row">
                   <div class="col-6"><h3 class="card-text cards-text-hp font-weight-bold">My Booking</h3></div>
                   <div class="col-6 font-weight-bold text-right color-default"><p>Order History</p></div>

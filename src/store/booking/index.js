@@ -43,8 +43,8 @@ const actions = {
       axios.get(URL + `/booking/getBookingUser/${payload.idusers}`)
         .then((response) => {
           console.log(response.data.data)
-          // context.commit('SET_ALL_DETAIL_BOOKING', response.data.data)
-          // resolve(response.data.data)
+          context.commit('SET_ALL_DETAIL_BOOKING', response.data.data)
+          resolve(response.data.data)
         }).catch((err) => {
           console.log(err)
         })

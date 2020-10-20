@@ -98,7 +98,7 @@
                         ></b-form-datepicker>
                       </div>
                       <div class="manyperson">
-                        <p>How many person? {{classFlight}}</p>
+                        <p>How many person?</p>
                         <div class="person">
                           <b-input type="number" placeholder="Child" v-model="child"></b-input>
                           <b-input type="number" placeholder="Adult" v-model="adult"></b-input>
