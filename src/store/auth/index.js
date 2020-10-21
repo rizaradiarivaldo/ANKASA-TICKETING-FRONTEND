@@ -41,9 +41,8 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(`${URL}/users/register`, payload)
         .then((result) => {
-          alert(result.data.message)
           resolve(result.data)
-          window.location = '/login'
+          // window.location = '/login'
         })
         .catch((err) => {
           reject(err)

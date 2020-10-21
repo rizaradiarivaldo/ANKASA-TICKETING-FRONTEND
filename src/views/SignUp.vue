@@ -15,10 +15,10 @@
             <form class="formRegis" @submit.prevent="loadOnce">
               <div class="user-box">
                 <input type="text" name="" v-model="form.username" required="">
-                <label>Full Name</label>
+                <label>Username</label>
               </div>
               <div class="user-box">
-                <input type="text" name="" v-model="form.email" required="">
+                <input type="email" name="" v-model="form.email" required="">
                 <label>Email</label>
               </div>
               <div class="user-box">
@@ -58,15 +58,28 @@ export default {
   },
   methods: {
     loadOnce () {
-      this.onSignUp(this.form)
+      const form = {
+        username: this.form.username.split(' ').join(''),
+        email: this.form.email,
+        password: this.form.password
+      }
+      this.onSignUp(form)
         .then((result) => {
-          console.log(result)
+          // alert(result)
+          if (result.message === 'Email Already Exist') {
+            this.$swal('Register', 'Username or Email already exist', 'error')
+          } else if (result.message === 'Register success, please check your email for activation') {
+            this.$swal('Register', 'You successfully Register, please check your email for activation', 'success')
+            setTimeout(() => {
+              window.location = '/login'
+            }, 2000)
+          }
         })
         .catch((err) => {
           console.log(err)
         })
     },
-    ...mapActions({ onSignUp: 'Auth/register' })
+    ...mapActions({ onSignUp: 'auth/register' })
   }
 }
 </script>
