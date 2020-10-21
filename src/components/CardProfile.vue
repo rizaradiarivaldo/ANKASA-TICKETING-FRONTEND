@@ -106,6 +106,7 @@ export default {
     logOut () {
       this.actionLogout().then((resolve) => {
         this.$swal('Logout', 'You successfully Logout', 'success')
+        localStorage.removeItem('idusers')
         setTimeout(() => {
           window.location = '/login'
         }, 2000)
