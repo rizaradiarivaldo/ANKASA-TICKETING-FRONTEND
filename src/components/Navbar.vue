@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-4">
                         <router-link to="/profile" class="router-link">
-                            <img class="img-thumbnail" style="width: 30px !important;" alt="Responsive image" :src="`${URL}/${image}`">
+                            <img class="img-thumbnail" alt="Responsive image" :src="`${URL}/${image}`">
                         </router-link>
                     </div>
                 </div>
