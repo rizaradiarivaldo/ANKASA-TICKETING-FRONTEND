@@ -41,10 +41,7 @@
                         <label>Username</label>
                       </div>
                       <div class="user-box">
-                        <select v-model="form.city">
-                          <option :value="null" selected></option>
-                          <option value="Medan">Medan</option>
-                        </select>
+                          <input type="text" name="" v-model="form.city" required="">
                         <label>City</label>
                       </div>
                       <div class="user-box">
@@ -107,10 +104,7 @@
                     <label>Username</label>
                   </div>
                   <div class="user-box">
-                    <select v-model="form.city">
-                      <option :value="null" selected></option>
-                      <option value="Medan">Medan</option>
-                    </select>
+                    <input type="text" name="" v-model="form.city" required="" />
                     <label>City</label>
                   </div>
                   <div class="user-box">
