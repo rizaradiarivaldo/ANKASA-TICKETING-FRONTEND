@@ -17,49 +17,23 @@
             <template v-slot:img>
               <b-card-group class="imgCarousel">
                 <b-avatar
-                  src="https://ichef.bbci.co.uk/news/1024/media/images/82399000/jpg/_82399978_75952740.jpg"
+                  src="https://media.nomadicmatt.com/2019/tokyohostel1b.jpg"
                   class="avaSize"
                 ></b-avatar>
                 <b-avatar
-                  src="https://ichef.bbci.co.uk/news/1024/media/images/82399000/jpg/_82399978_75952740.jpg"
+                  src="https://www.nationsonline.org/gallery/USA/Times-Square-New-York.jpg"
                   class="avaSize"
                 ></b-avatar>
                 <b-avatar
-                  src="https://ichef.bbci.co.uk/news/1024/media/images/82399000/jpg/_82399978_75952740.jpg"
+                  src="https://d1bvpoagx8hqbg.cloudfront.net/originals/erasmus-experience-paris-france-marie-nadine-1e9930edd5b129d52796b8c08e1fa4c1.jpg"
                   class="avaSize"
                 ></b-avatar>
                 <b-avatar
-                  src="https://ichef.bbci.co.uk/news/1024/media/images/82399000/jpg/_82399978_75952740.jpg"
+                  src="https://www.azamara.com/sites/default/files/heros/jakarta-indonesia_0.jpg"
                   class="avaSize"
                 ></b-avatar>
                 <b-avatar
-                  src="https://ichef.bbci.co.uk/news/1024/media/images/82399000/jpg/_82399978_75952740.jpg"
-                  class="avaSize"
-                ></b-avatar>
-              </b-card-group>
-            </template>
-          </b-carousel-slide>
-          <b-carousel-slide class="asd">
-            <template v-slot:img>
-              <b-card-group class="imgCarousel">
-                <b-avatar
-                  src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
-                  class="avaSize"
-                ></b-avatar>
-                <b-avatar
-                  src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
-                  class="avaSize"
-                ></b-avatar>
-                <b-avatar
-                  src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
-                  class="avaSize"
-                ></b-avatar>
-                <b-avatar
-                  src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
-                  class="avaSize"
-                ></b-avatar>
-                <b-avatar
-                  src="https://asset-a.grid.id/crop/0x0:0x0/345x242/photo/grid/original/68505_celebrity.JPG"
+                  src="https://images.movehub.com/wp-content/uploads/2017/12/14094628/Liverpool-1.jpg"
                   class="avaSize"
                 ></b-avatar>
               </b-card-group>
