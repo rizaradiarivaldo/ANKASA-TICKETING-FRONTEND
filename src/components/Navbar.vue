@@ -112,7 +112,7 @@
                         <img src="../assets/img/bell.png">
                     </div>
                     <div class="col-4">
-                            <img class="img-thumbnail" width="50px" alt="Responsive image" :src="`${URL}/${image}`">
+                            <img class="img-thumbnail" alt="Responsive image" :src="`${URL}/${image}`">
                     </div>
                   </div>
                 </div>
