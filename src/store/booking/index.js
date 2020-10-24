@@ -27,6 +27,32 @@ const mutations = {
 }
 
 const actions = {
+  confirmBook (context, payload) {
+    return new Promise((resolve, reject) => {
+      const fd = new FormData()
+      fd.append('image', payload.image)
+      fd.append('idbooking', payload.id)
+      axios.patch(URL + `/booking/updatePayment/${payload.id}`, fd)
+        .then((response) => {
+          resolve(response.data.message)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    })
+  },
+  deleteBook (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.delete(URL + `/booking/delete/${payload}`)
+        .then((response) => {
+          // resolve(response.data.data)
+          console.log(response)
+        })
+        .catch((err) => {
+          reject(err)
+        })
+    })
+  },
   getBooking (context, payload) {
     return new Promise((resolve, reject) => {
       axios.get(URL + '/booking/getAll')

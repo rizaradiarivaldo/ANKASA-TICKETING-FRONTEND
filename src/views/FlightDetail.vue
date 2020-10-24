@@ -164,6 +164,7 @@ import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import { mapActions, mapGetters } from 'vuex'
 export default {
+  title: 'Ankasa | Flight Detail',
   data () {
     return {
       URL: process.env.VUE_APP_API_URL,

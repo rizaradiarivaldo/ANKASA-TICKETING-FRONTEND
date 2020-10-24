@@ -47,6 +47,7 @@
 <script>
 import { mapActions } from 'vuex'
 export default {
+  title: 'Ankasa | Sign Up',
   data () {
     return {
       form: {

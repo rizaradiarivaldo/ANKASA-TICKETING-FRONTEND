@@ -257,6 +257,7 @@ import { mapActions, mapGetters } from 'vuex'
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 export default {
+  title: 'Ankasa | Find Ticket',
   components: {
     Navbar,
     Footer

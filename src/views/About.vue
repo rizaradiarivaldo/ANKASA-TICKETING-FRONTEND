@@ -17,6 +17,7 @@
 <script>
 import { mdbInput, mdbBtn } from 'mdbvue'
 export default {
+  title: 'Ankasa | About',
   name: 'Basic',
   components: {
     mdbInput,

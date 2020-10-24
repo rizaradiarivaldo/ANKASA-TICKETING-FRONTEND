@@ -62,6 +62,7 @@
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 export default {
+  title: 'Ankasa | Booking Detail',
   components: {
     Navbar,
     Footer

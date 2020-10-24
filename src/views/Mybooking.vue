@@ -21,7 +21,28 @@
             </div>
             <div class="card mb-4" v-for="(item, index) in getBookingUser" :key="index">
               <div class="card-body">
+                <div class="d-flex justify-content-between">
                 <h6 class="card-title">{{item.date_departure}} - {{item.departure.slice(0,5)}}</h6>
+<!--  -->
+                <b-dropdown variant="outline" right class="float-right" menu-class="dropmenu" no-caret>
+               <template v-slot:button-content>
+                <img src="../assets/img/more-options.png" width="20" height="20" class="">
+              </template>
+              <b-dropdown-item-button class="mt-2 mb-2" @click="setidBooking(item.idbooking)" v-b-modal.modalCon>
+                Confirm
+              </b-dropdown-item-button>
+              <b-modal id="modalCon" hide-footer title="Confirm">
+                <form enctype="multipart/form-data" @submit.prevent="modalConfirm()">
+                  <b-form-file type="file" @change="processFile($event)" required></b-form-file>
+                <b-button class="mt-2" variant="outline-primary" block type="submit">Send</b-button>
+                </form>
+              </b-modal>
+              <b-dropdown-item-button class="mt-2 mb-2" @click="deleteTicket(item.idbooking)">
+                Delete
+              </b-dropdown-item-button>
+            </b-dropdown>
+<!--  -->
+                </div>
                 <h5 class="font-weight-bold" >{{item.fromalias}} <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> {{item.toalias}}</h5>
                 <p class="color-second" >{{item.nameairlines}}, {{item.code}}</p>
                 <hr class="mb-4" >
@@ -97,9 +118,14 @@ import Footer from '@/components/Footer.vue'
 import CardProfile from '@/components/CardProfile.vue'
 import { mapActions, mapGetters } from 'vuex'
 export default {
+  title: 'Ankasa | My Booking',
   data () {
     return {
-      data: null
+      data: null,
+      // form: {
+      // id: '',
+      image: ''
+      // }
     }
   },
   components: {
@@ -111,8 +137,44 @@ export default {
     ...mapActions({
       actionGetUser: 'users/getUser',
       actionUpdate: 'users/updateProfile',
-      actionGetBookingUser: 'booking/getDetailBooking'
-    })
+      actionGetBookingUser: 'booking/getDetailBooking',
+      actionBookConfirm: 'booking/confirmBook',
+      actionBookDelete: 'booking/deleteBook'
+    }),
+    modalConfirm () {
+      const fd = {
+        id: localStorage.getItem('idbooking'),
+        image: this.image
+      }
+      this.actionBookConfirm(fd)
+        .then((response) => {
+          if (response === 'Update payment success') {
+            this.$swal('Thanks', 'You successfully Confirmation', 'success')
+            setTimeout(() => {
+              window.location = '/mybooking'
+            }, 2000)
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    setidBooking (id) {
+      localStorage.setItem('idbooking', id)
+    },
+    deleteTicket (id) {
+      this.actionBookDelete(id)
+        .then((response) => {
+          // alert(response)
+          console.log(response)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    processFile (event) {
+      this.image = event.target.files[0]
+    }
   },
   computed: {
     ...mapGetters({

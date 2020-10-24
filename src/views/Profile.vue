@@ -133,6 +133,7 @@ import Footer from '@/components/Footer.vue'
 import CardProfile from '@/components/CardProfile.vue'
 import { mapActions, mapGetters } from 'vuex'
 export default {
+  title: 'Ankasa | Profile',
   components: {
     Navbar,
     Footer,
