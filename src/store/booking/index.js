@@ -52,8 +52,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.delete(URL + `/booking/delete/${payload}`)
         .then((response) => {
-          // resolve(response.data.data)
-          console.log(response)
+          resolve(response.data.message)
         })
         .catch((err) => {
           reject(err)

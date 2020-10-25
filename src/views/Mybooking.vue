@@ -30,7 +30,7 @@
             :key="index"
           >
 
-            <div class="card-body" style="cursor: pointer;" @click="setIdBooking(item.idbooking)">
+            <div class="card-body">
               <div class="d-flex justify-content-between">
                 <h6 class="card-title">
                   {{ item.date_departure }} - {{ item.departure.slice(0, 5) }}
@@ -111,7 +111,7 @@
                     >
                   </p>
                 </div>
-                <div class="col-6">
+                <div class="col-6" @click="getIdBooking(item.idbooking)" style="cursor: pointer;">
                   <p class="font-weight-bold text-right color-default">
                     View Details
                     <img class="ml-2" src="../assets/img/btnback.png" />
@@ -218,7 +218,7 @@ export default {
     CardProfile
   },
   methods: {
-    setIdBooking (id) {
+    getIdBooking (id) {
       localStorage.setItem('idbooking', id)
       setTimeout(() => {
         window.location = '/bookingdetail'
@@ -256,7 +256,7 @@ export default {
       this.actionBookDelete(id)
         .then((response) => {
           // alert(response)
-          console.log(response)
+          window.location = '/mybooking'
         })
         .catch((err) => {
           console.log(err)
