@@ -6,7 +6,25 @@
         <b-jumbotron class="fillBOPass">
           <div class="fillOne">
             <h1>Booking Pass</h1>
-            <p class="h3 mb-2"><b-icon icon="three-dots-vertical"></b-icon></p>
+            <p class="h3 mb-2">
+              <b-dropdown
+                  variant="outline"
+                  right
+                  class="float-right"
+                  menu-class="dropmenu"
+                  no-caret
+                >
+                  <template v-slot:button-content>
+                    <p class="h3"><b-icon icon="three-dots-vertical"></b-icon></p>
+                  </template>
+                  <b-dropdown-item-button @click="print">
+                    Print Ticket
+                  </b-dropdown-item-button>
+                  <b-dropdown-item-button>
+                    <router-link class="txtDecor" to="/mybooking">Back</router-link>
+                  </b-dropdown-item-button>
+                </b-dropdown>
+            </p>
           </div>
           <div class="fillTwo">
             <b-row class="allLine">
@@ -59,6 +77,9 @@
 </template>
 
 <script>
+// import Swal from 'sweetalert2'
+import JsPDF from 'jspdf'
+// import html2canvas from 'html2canvas'
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import { mapGetters, mapActions } from 'vuex'
@@ -71,7 +92,8 @@ export default {
   },
   data () {
     return {
-      classflight: null
+      classflight: null,
+      ngeprint: ''
     }
   },
   computed: {
@@ -82,7 +104,13 @@ export default {
   methods: {
     ...mapActions({
       actionGetBookingDetail: 'booking/getBookingDetails'
-    })
+    }),
+    print () {
+      const doc = new JsPDF('landscape')
+
+      doc.text(this.ngeprint, 15, 15)
+      doc.save('Ankasa-Ticket.pdf')
+    }
   },
   mounted () {
     this.actionGetBookingDetail().then((result) => {
@@ -95,12 +123,24 @@ export default {
       } else if (this.classflight === 2) {
         this.classflight = 'First Class'
       }
+      this.ngeprint = `${
+        'Code : ' + result[0].code + '\n' +
+        'Class : ' + this.classflight + '\n' +
+        'From : ' + result[0].fromalias + '\n' +
+        'To : ' + result[0].toalias + '\n' +
+        'Terminal : ' + result[0].terminal + '\n' +
+        'Gate: ' + result[0].gate + '\n' +
+        'Departure : ' + result[0].date_departure + ' - ' + result[0].departure}`
     })
   }
 }
 </script>
 
 <style scoped>
+.txtDecor {
+  text-decoration: none;
+  color: black;
+}
 .allLine{
     margin: 0px;
     border: 2px solid;
