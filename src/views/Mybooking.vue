@@ -1,98 +1,182 @@
 <template>
-  <div class="shadow container-fluid" >
-      <Navbar/>
-        <div class="app-body pt-sm-5 pl-sm-5 pr-sm-5 pb-sm-5 pt-0 pl-0 pr-0 pb-0">
-          <!-- desktop -->
-          <div class="row d-sm-flex d-none">
-          <div class="col-sm-3">
-            <CardProfile :form='data'/>
-          </div>
-          <div class="col-sm-9">
-            <div class="card mb-4">
-              <div class="card-body">
-                <h6 class="card-title cards-title">
-                  MY BOOKING
-                </h6>
-                <div class="row">
-                  <div class="col-6"><h3 class="card-text font-weight-bold">My Booking</h3></div>
-                  <div class="col-6 font-weight-bold text-right color-default"><p>Order History</p></div>
+  <div class="shadow container-fluid">
+    <Navbar />
+    <div class="app-body pt-sm-5 pl-sm-5 pr-sm-5 pb-sm-5 pt-0 pl-0 pr-0 pb-0">
+      <!-- desktop -->
+      <div class="row d-sm-flex d-none">
+        <div class="col-sm-3">
+          <CardProfile :form="data" />
+        </div>
+
+        <div class="col-sm-9">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h6 class="card-title cards-title">MY BOOKING</h6>
+
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="card-text font-weight-bold">My Booking</h3>
+                </div>
+                <div class="col-6 font-weight-bold text-right color-default">
+                  <p>Order History</p>
                 </div>
               </div>
             </div>
-            <div class="card mb-4" v-for="(item, index) in getBookingUser" :key="index">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
-                <h6 class="card-title">{{item.date_departure}} - {{item.departure.slice(0,5)}}</h6>
-<!--  -->
-                <b-dropdown variant="outline" right class="float-right" menu-class="dropmenu" no-caret>
-               <template v-slot:button-content>
-                <img src="../assets/img/more-options.png" width="20" height="20" class="">
-              </template>
-              <b-dropdown-item-button class="mt-2 mb-2" @click="setidBooking(item.idbooking)" v-b-modal.modalCon>
-                Confirm
-              </b-dropdown-item-button>
-              <b-modal id="modalCon" hide-footer title="Confirm">
-                <form enctype="multipart/form-data" @submit.prevent="modalConfirm()">
-                  <b-form-file type="file" @change="processFile($event)" required></b-form-file>
-                <b-button class="mt-2" variant="outline-primary" block type="submit">Send</b-button>
-                </form>
-              </b-modal>
-              <b-dropdown-item-button class="mt-2 mb-2" @click="deleteTicket(item.idbooking)">
-                Delete
-              </b-dropdown-item-button>
-            </b-dropdown>
-<!--  -->
+          </div>
+
+          <div
+            class="card mb-4"
+            v-for="(item, index) in getBookingUser"
+            :key="index"
+          >
+
+            <div class="card-body" style="cursor: pointer;" @click="setIdBooking(item.idbooking)">
+              <div class="d-flex justify-content-between">
+                <h6 class="card-title">
+                  {{ item.date_departure }} - {{ item.departure.slice(0, 5) }}
+                </h6>
+                <!--  -->
+                <b-dropdown
+                  variant="outline"
+                  right
+                  class="float-right"
+                  menu-class="dropmenu"
+                  no-caret
+                >
+                  <template v-slot:button-content>
+                    <img
+                      src="../assets/img/more-options.png"
+                      width="20"
+                      height="20"
+                      class=""
+                    />
+                  </template>
+
+                  <b-dropdown-item-button
+                    class="mt-2 mb-2"
+                    @click="setidBooking(item.idbooking)"
+                    v-b-modal.modalCon
+                  >
+                    Confirm
+                  </b-dropdown-item-button>
+
+                  <b-modal id="modalCon" hide-footer title="Confirm">
+                    <form
+                      enctype="multipart/form-data"
+                      @submit.prevent="modalConfirm()"
+                    >
+                      <b-form-file
+                        type="file"
+                        @change="processFile($event)"
+                        required
+                      ></b-form-file>
+                      <b-button
+                        class="mt-2"
+                        variant="outline-primary"
+                        block
+                        type="submit"
+                        >Send</b-button
+                      >
+                    </form>
+                  </b-modal>
+                  <b-dropdown-item-button
+                    class="mt-2 mb-2"
+                    @click="deleteTicket(item.idbooking)"
+                  >
+                    Delete
+                  </b-dropdown-item-button>
+                </b-dropdown>
+                <!--  -->
+              </div>
+              <h5 class="font-weight-bold">
+                {{ item.fromalias }}
+                <img class="ml-3 mr-3" src="../assets/img/Vector (3).png" />
+                {{ item.toalias }}
+              </h5>
+              <p class="color-second">
+                {{ item.nameairlines }}, {{ item.code }}
+              </p>
+              <hr class="mb-4" />
+              <div class="row">
+                <div class="col-6">
+                  <p class="color-second font-weight-bold">
+                    Status
+                    <span
+                      class="booking-status-pending"
+                      v-if="item.payment_status === 0"
+                      >Waiting for payment</span
+                    >
+                    <span class="booking-status-success" v-else
+                      >Eticket issued</span
+                    >
+                  </p>
                 </div>
-                <h5 class="font-weight-bold" >{{item.fromalias}} <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> {{item.toalias}}</h5>
-                <p class="color-second" >{{item.nameairlines}}, {{item.code}}</p>
-                <hr class="mb-4" >
-                <div class="row">
-                  <div class="col-6">
-                    <p class="color-second font-weight-bold">
-                      Status
-                      <span class="booking-status-pending" v-if="item.payment_status===0">Waiting for payment</span>
-                      <span class="booking-status-success" v-else>Eticket issued</span>
-                      </p>
-                  </div>
-                  <div class="col-6">
-                    <p class="font-weight-bold text-right color-default" >View Details <img class="ml-2" src="../assets/img/btnback.png"></p>
-                  </div>
+                <div class="col-6">
+                  <p class="font-weight-bold text-right color-default">
+                    View Details
+                    <img class="ml-2" src="../assets/img/btnback.png" />
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- HP -->
-        <div class="row no-gutters justify-content-center bg-white d-sm-none d-flex">
-          <div class="col-sm-12">
-            <div class="card mb-4">
-              <div class="card-body">
-                <h6 class="card-title cards-title">MY BOOKING</h6>
-                <div class="row">
-                  <div class="col-6"><h3 class="card-text cards-text-hp font-weight-bold">My Booking</h3></div>
-                  <div class="col-6 font-weight-bold text-right color-default"><p>Order History</p></div>
+      </div>
+
+      <!-- HP -->
+      <div
+        class="row no-gutters justify-content-center bg-white d-sm-none d-flex"
+      >
+        <div class="col-sm-12">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h6 class="card-title cards-title">MY BOOKING</h6>
+              <div class="row">
+                <div class="col-6">
+                  <h3 class="card-text cards-text-hp font-weight-bold">
+                    My Booking
+                  </h3>
+                </div>
+                <div class="col-6 font-weight-bold text-right color-default">
+                  <p>Order History</p>
                 </div>
               </div>
             </div>
-            <div v-for="(item, index) in getBookingUser" :key="index">
-              <div class="card mb-4">
+          </div>
+          <div v-for="(item, index) in getBookingUser" :key="index">
+            <div class="card mb-4">
               <div class="card-body-hp">
-                <h6 class="card-title">{{item.date_departure}} - {{item.departure.slice(0,5)}}</h6>
-                <h5 class="font-weight-bold" >{{item.fromalias}} <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> {{item.toalias}}</h5>
-                <p class="color-second" >{{item.nameairlines}}, {{item.code}}</p>
-                <hr class="mb-4" >
+                <h6 class="card-title">
+                  {{ item.date_departure }} - {{ item.departure.slice(0, 5) }}
+                </h6>
+                <h5 class="font-weight-bold">
+                  {{ item.fromalias }}
+                  <img class="ml-3 mr-3" src="../assets/img/Vector (3).png" />
+                  {{ item.toalias }}
+                </h5>
+                <p class="color-second">
+                  {{ item.nameairlines }}, {{ item.code }}
+                </p>
+                <hr class="mb-4" />
                 <div class="row">
                   <div class="col-12">
-                    <p class="color-second font-weight-bold" >Status
-                      <span class="booking-status-pending" v-if="item.payment_status===0">Waiting for payment</span>
-                      <span class="booking-status-success" v-else>Eticket issued</span>
+                    <p class="color-second font-weight-bold">
+                      Status
+                      <span
+                        class="booking-status-pending"
+                        v-if="item.payment_status === 0"
+                        >Waiting for payment</span
+                      >
+                      <span class="booking-status-success" v-else
+                        >Eticket issued</span
+                      >
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            </div>
-            <!-- <div class="card">
+          </div>
+          <!-- <div class="card">
               <div class="card-body-hp">
                 <h6 class="card-title">Monday, 20 July ‘20 - 12:33</h6>
                 <h5 class="font-weight-bold" >IDN <img class="ml-3 mr-3" src="../assets/img/Vector (3).png"> JPN</h5>
@@ -105,10 +189,10 @@
                 </div>
               </div>
             </div> -->
-          </div>
         </div>
       </div>
-      <Footer/>
+    </div>
+    <Footer />
   </div>
 </template>
 
@@ -134,6 +218,12 @@ export default {
     CardProfile
   },
   methods: {
+    setIdBooking (id) {
+      localStorage.setItem('idbooking', id)
+      setTimeout(() => {
+        window.location = '/bookingdetail'
+      }, 500)
+    },
     ...mapActions({
       actionGetUser: 'users/getUser',
       actionUpdate: 'users/updateProfile',

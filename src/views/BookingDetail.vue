@@ -15,32 +15,32 @@
                   <img
                     src="../assets/img/garuda-indonesia-logo-BD82882F07-seeklogo 1.png"
                   />
-                  <h1>IDN <img src="../assets/img/planeGray.svg" /> JPN</h1>
+                  <h1>{{getDetailBooking[0].fromalias}} <img src="../assets/img/planeGray.svg" /> {{getDetailBooking[0].toalias}}</h1>
                 </div>
                 <div class="Detail1">
                   <b-col>
                     <h5>Code</h5>
-                    <h4>AB-221</h4>
+                    <h4>{{getDetailBooking[0].code}}</h4>
                   </b-col>
                   <b-col>
                     <h5>Class</h5>
-                    <h4>Economy</h4>
+                    <h4>{{this.classflight}}</h4>
                   </b-col>
                 </div>
                 <div class="Detail2">
                   <b-col>
                     <h5>Terminal</h5>
-                    <h4>A</h4>
+                    <h4>{{getDetailBooking[0].terminal}}</h4>
                   </b-col>
                   <b-col>
                     <h5>Gate</h5>
-                    <h4>221</h4>
+                    <h4>{{getDetailBooking[0].gate}}</h4>
                   </b-col>
                 </div>
                 <div class="Detail3">
                   <b-col>
                     <h5>Departure</h5>
-                    <h4>Monday, 20 July ‘20 - 12:33</h4>
+                    <h4>{{getDetailBooking[0].date_departure}} - {{getDetailBooking[0].departure}}</h4>
                   </b-col>
                 </div>
               </b-col>
@@ -61,11 +61,41 @@
 <script>
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   title: 'Ankasa | Booking Detail',
   components: {
     Navbar,
     Footer
+  },
+  data () {
+    return {
+      classflight: null
+    }
+  },
+  computed: {
+    ...mapGetters({
+      getDetailBooking: 'booking/getBookingDetail'
+    })
+  },
+  methods: {
+    ...mapActions({
+      actionGetBookingDetail: 'booking/getBookingDetails'
+    })
+  },
+  mounted () {
+    this.actionGetBookingDetail().then((result) => {
+      this.classflight = result[0].classflight
+
+      if (this.classflight === 0) {
+        this.classflight = 'Economy'
+      } else if (this.classflight === 1) {
+        this.classflight = 'Business'
+      } else if (this.classflight === 2) {
+        this.classflight = 'First Class'
+      }
+    })
   }
 }
 </script>

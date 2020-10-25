@@ -4,7 +4,8 @@ const { URL } = require('../../helper/index')
 const state = () => {
   return {
     dataBooking: [],
-    detailBooking: []
+    detailBooking: [],
+    bookingDetail: []
   }
 }
 
@@ -14,6 +15,9 @@ const getters = {
   },
   getDetailBooking (state) {
     return state.detailBooking
+  },
+  getBookingDetail (state) {
+    return state.bookingDetail
   }
 }
 
@@ -23,6 +27,9 @@ const mutations = {
   },
   SET_ALL_DETAIL_BOOKING (state, payload) {
     state.detailBooking = payload
+  },
+  SET_DATA_BOOKING (state, payload) {
+    state.bookingDetail = payload
   }
 }
 
@@ -73,6 +80,18 @@ const actions = {
           resolve(response.data.data)
         }).catch((err) => {
           console.log(err)
+        })
+    })
+  },
+
+  getBookingDetails (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.get(URL + `/booking/getDetail/${localStorage.getItem('idbooking')}`)
+        .then((response) => {
+          context.commit('SET_DATA_BOOKING', response.data.data)
+          resolve(response.data.data)
+        }).catch((err) => {
+          reject(err)
         })
     })
   },

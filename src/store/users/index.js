@@ -22,7 +22,7 @@ const mutations = {
 const actions = {
   getUser (context, payload) {
     return new Promise((resolve, reject) => {
-      axios.get(URL + `/users/getDetail/${localStorage.getItem('idusers')}}`)
+      axios.get(URL + `/users/getDetail/${localStorage.getItem('idusers')}`)
         .then((response) => {
           context.commit('SET_DATA_USER', response.data.data)
           resolve(response.data.data)
